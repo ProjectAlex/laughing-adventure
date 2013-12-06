@@ -1,3 +1,4 @@
+
 build-essential
 libsqlite3-dev 
 libsqlite3-0
@@ -15,3 +16,5 @@ pkg-config
 libcurl4-openssl-dev 
 libxslt-dev 
 libxml2-dev
+sqlite3
+imagemagick
