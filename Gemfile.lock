@@ -44,6 +44,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -93,6 +97,11 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     polyglot (0.3.3)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
@@ -135,6 +144,8 @@ GEM
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
+    socialization (1.0.0)
+      activerecord
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -186,6 +197,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 1.2)
   jquery-rails
+  paperclip
   quiet_assets
   rails (= 4.0.0)
   rails_layout
@@ -193,6 +205,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   simple_form (>= 3.0.0.rc)
+  socialization
   sqlite3
   therubyracer
   thin
