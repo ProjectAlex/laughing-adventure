@@ -1,10 +1,11 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.string :type
+      t.string :nature
       t.text :content
       t.text :caption
-      t.references :user, index: true
+      t.string :posted_by
+      t.integer :posted_by_uid
 
       t.timestamps
     end

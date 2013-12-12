@@ -1,0 +1,17 @@
+<% if posts_streams.empty? %>
+	<h3> no posts yet </h3>
+<% else %>
+  <% posts_streams.each do |post| %>
+    <div class="postbody"> 
+          
+          <div class="postimg"><img src="assets/default_avatar.png" style='width:50px;height:50px'/></div>
+          <div class="posttext">
+          	<blockquote>
+          		<p><%= post.content %></p>
+          		<small><%= post.posted_by %></small>
+          	</blockquote>
+          <div class="posttime">created at  <%= post.created_at %></div></div> 
+     </div>
+  <% end %>
+<% end %>
+    

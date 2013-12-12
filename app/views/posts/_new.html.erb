@@ -1,0 +1,14 @@
+<%= form_for(@post) do |f| %>
+<div class="fields">
+    <%= f.label :nature %>
+    <%= f.text_field :nature %>
+ 		<%= f.label :content %>
+    <%= f.text_area :content %>
+		<%= f.label :caption %>
+    <%= f.text_area :caption %><br/>
+		<%= f.submit("Post it") %>
+  </div>
+<div class="actions" id="refreshscribbles">
+    
+  </div>
+<% end %>

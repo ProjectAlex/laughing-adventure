@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-
+  
+  def new
+	@post = Post.new
+  end
   def index
      
     @users = User.all
@@ -12,8 +15,9 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @role = Role.find(params[:id])
-    if @user.update_attributes(:as => :admin)
+    @role = Role.find_by name: "Admin"
+		@user.add_role(:Admin)
+    if @user.has_role? :Admin
       redirect_to users_path, :notice => "User updated."
     else
       redirect_to users_path, :alert => "Unable to update user."

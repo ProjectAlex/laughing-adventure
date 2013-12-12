@@ -24,6 +24,11 @@
     </li>
   <% end %>
   <% if user_signed_in? %>
+    <li>
+    
+    </li>
+   <% end %>
+  <% if user_signed_in? %>
     <li class="UserNav">
     	<%= link_to "Logged in as " + current_user.name, current_user %>
     </li>
