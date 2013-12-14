@@ -1,49 +1,66 @@
 <h1>Home</h1>
 <% if current_user %>
-	<% @post = Post.new %>
-	<div id="newpost">
-		<%=render :partial => 'posts/new.html.erb'%>
-	</div>
-	<div id="postsfeed">
-		<%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
-	</div></br>
+<% @post = Post.new %>
+<div id="newpost">
+<%=render :partial => 'posts/new.html.erb'%>
+</div>
+<div id="postsfeed">
+<%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
+</div></br>
 <% end %>
 <script>
-  $(document).ready(function(){
-  var timelyrefreshPostFeeds = function(){
-  url = '/refresh'
-  $.get(url,function(data,status){
-   $('#postsfeed').html(data)
-   return false
-   });
-  };
-  setInterval(timelyrefreshPostFeeds,60000);
+var rf;
+var timelyrefreshPostFeeds; 
+function disable(){
+	clearInterval(rf);
+}
 
-   $(".votes").click(function()
-  {
-     var id = $(this).attr("id");
-     var name = $(this).attr("name");
-    var parent = $(this)
-          if (name=='up')
-         {
-              
+$(document).ready(function(){
+		timelyrefreshPostFeeds = function(){
+		url = '/refresh'
+		$.get(url,function(data,status){
+			$('#postsfeed').html(data)
+			return false
+			});
+		};
+		
+		<% if current_user %>
+		rf = setInterval(timelyrefreshPostFeeds,5000);
+		<% end %>
 
-              $.get('/votedup', {id: id},
-                   function(data,status){
-                   parent.html(data);
-                                          });
-         }
-         else
-        {
-             $.get('/voteddown', {id: id},
-                   function(data,status){
-                   parent.html(data);
-                                          });
-        }
-   return false;
-  });
+		$(".votes").click(function()
+			{
+			var id = $(this).attr("id");
+			var name = $(this).attr("name");
+			var parent = $(this)
+			if (name=='up')
+			{
 
-  });
+
+			$.get('/votedup', {id: id},
+				function(data,status){
+				parent.html(data);
+				});
+			}
+			else
+			{
+			$.get('/voteddown', {id: id},
+				function(data,status){
+				parent.html(data);
+				});
+			}
+		return false;
+			});
+
+});
+
+function enable(){
+		rf = setInterval(timelyrefreshPostFeeds,5000);
+		}
 
 
 </script>
+
+
+
+

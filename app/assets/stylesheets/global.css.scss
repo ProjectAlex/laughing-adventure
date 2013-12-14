@@ -2,9 +2,10 @@
 {
 min-height:100px;
 margin-bottom:10px;
+margin-right:50px;
 border-bottom:solid 1px #3b5998 ;
 float:right;
-width:800px;
+width:750px;
 transition : all 0.7s;
 }
 .postbody:hover
@@ -47,6 +48,10 @@ margin-top:5px;
 
 .posttext 
 {
+background:white;
+border-radius:10px;
+opacity:0.7;
+border:1px solid black;
 margin-left:70px;
 min-height:50px;
 word-wrap:break-word;
@@ -56,16 +61,27 @@ display:block;
 font-family:'Georgia', Times New Roman, Times, serif;
 transition : all 0.7s;
 }
-.posttext p:hover
-{
-font-size:150%;
+
+.empty{
+margin-left:70px;
+padding:5px;
+text-align:center;
+color:#999999;
+}
+
+.postbody small{
+width:200px;
+float:left;
 }
 .posttime
 {
+padding-right:5px;
+display:inline-block;
+float:right;
 font-size:11px;
 color:#999;
 font-family:Arial, Helvetica, sans-serif;
-margin-top:10px;
+margin-top:0px;
 }
 .fields{
 border:2px solid #AAAAAA;
@@ -80,7 +96,25 @@ transition : all 0.7s;
 border:2px solid #AA6666;
 padding:15px;
 }
-.postfeed
-{
-border:5px solid black;
+.comments{
+width:650px;
+float:right;
+
+}
+.comment{
+opacity:0.5;
+margin:2px;
+transition: all 0.5s;
+}
+.comment small{
+color:#ff4444;
+}
+.comment:hover{
+opacity:1;
+}
+
+.newcomment{
+width:650px;
+float:right;
+
 }

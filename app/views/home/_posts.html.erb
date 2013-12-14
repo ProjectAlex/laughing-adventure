@@ -1,5 +1,5 @@
 <% if posts_streams.empty? %>
-	<h3> no posts yet </h3>
+	<div class="empty"><h3> no posts yet </h3></div>
 <% else %>
   <% posts_streams.each do |post| %>
     <div class="postbody"> 
@@ -7,10 +7,19 @@
           <div class="postimg"><img src="assets/default_avatar.png" style='width:50px;height:50px'/></div>
           <div class="posttext">
           	<blockquote>
-          		<p><%= post.content %></p>
-          		<small><%= post.posted_by %></small>
-          	</blockquote>
-          <div class="posttime">created at  <%= post.created_at %></div></div> 
+    		<p><%= post.content %></p>
+       		<small><%= post.posted_by %></small>
+          	
+ <div class="posttime">created at  <%= post.created_at %></div>
+</blockquote>
+</div> 
+		<div class="comments">
+			<%=render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
+		</div>
+		<div class="newcomment">
+			<%=render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>		
+		</div>
+         
      </div>
   <% end %>
 <% end %>

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :update_poststreams, :except => :refreshposts
+  before_filter :update_poststreams
 
   def home
   end
@@ -23,12 +23,12 @@ class HomeController < ApplicationController
 =end
 
   def refreshposts
-  render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams }
+  	render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams }
   end
 
-
-  protected
+protected
   def update_poststreams
-  @posts_streams = Post.order('created_at DESC').all
+  	@posts_streams = Post.order('created_at DESC').all
   end 
+ 
 end
