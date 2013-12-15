@@ -1,7 +1,14 @@
 <%= form_for(@post) do |f| %>
 <div class="fields">
-    <%= f.label :nature %>
-    <%= f.text_field :nature %>
+    <%= f.label :type %>
+<div class="radio">
+    <%= radio_button_tag(:nature, "normal") %>
+<%= label_tag(:nature_normal, "Normal") %>
+<%= radio_button_tag(:nature, "image") %>
+<%= label_tag(:nature_image, "Image") %>
+<%= radio_button_tag(:nature, "document") %>
+<%= label_tag(:nature_document, "Document") %>
+</div>
  		<%= f.label :content %>
     <%= f.text_area :content %>
 		<%= f.label :caption %>

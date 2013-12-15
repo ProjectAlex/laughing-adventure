@@ -113,8 +113,21 @@ color:#ff4444;
 opacity:1;
 }
 
+.radio{
+display:inline-block;
+overflow: hidden;
+white-space: nowrap;
+}
+
 .newcomment{
 width:650px;
 float:right;
-
+}
+body{
+opacity:0.98;
+background-image:url('back.png');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-position:center; 
+filter:blur(4px);
 }

@@ -1,3 +1,4 @@
+<% content_for :title, "Alex" %>
 <h1>Home</h1>
 <% if current_user %>
 <% @post = Post.new %>
@@ -10,6 +11,7 @@
 <% end %>
 <script>
 var rf;
+clearInterval(rf);
 var timelyrefreshPostFeeds; 
 function disable(){
 	clearInterval(rf);
