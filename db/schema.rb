@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20131212164158) do
   end
 
   create_table "roles", force: true do |t|
-    t.string   "name"
+    t.string   "name",          default: "User"
     t.integer  "resource_id"
     t.string   "resource_type"
     t.datetime "created_at"
