@@ -11,6 +11,7 @@
 <% end %>
 <script>
 var rf;
+var refreshtime = 5000;
 clearInterval(rf);
 var timelyrefreshPostFeeds; 
 function disable(){
@@ -27,7 +28,7 @@ $(document).ready(function(){
 		};
 		
 		<% if current_user %>
-		rf = setInterval(timelyrefreshPostFeeds,5000);
+		rf = setInterval(timelyrefreshPostFeeds,refreshtime);
 		<% end %>
 
 		$(".votes").click(function()
@@ -57,7 +58,7 @@ $(document).ready(function(){
 });
 
 function enable(){
-		rf = setInterval(timelyrefreshPostFeeds,5000);
+		rf = setInterval(timelyrefreshPostFeeds,refreshtime);
 		}
 
 
