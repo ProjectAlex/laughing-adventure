@@ -2,12 +2,16 @@
 <h1>Home</h1>
 <% if current_user %>
 <% @post = Post.new %>
-<div id="newpost">
+<table class="table"><tr><td>
+<div id="col-md-1">
 <%=render :partial => 'posts/new.html.erb'%>
 </div>
-<div id="postsfeed">
+</td><td>
+<div id="col-xs-8">
 <%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
-</div></br>
+</div>
+</td></tr></table>
+</br>
 <% end %>
 <script>
 var rf;
