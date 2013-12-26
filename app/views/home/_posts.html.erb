@@ -4,22 +4,29 @@
   <% posts_streams.each do |post| %>
     <div class="post"> 
           
-          <div class=""><img src="assets/default_avatar.png" style='width:50px;height:50px'/></div>
-          <div class="pull-right">
-          	<blockquote>
-    		<p><%= post.content %></p>
-       		<small><%= post.posted_by %></small>
-          	
- <div class="posttime">created at  <%= post.created_at %></div>
-</blockquote>
-</div> 
-		<div class="clearfix">
-			<%=render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
-		</div>
-		<div class="clearfix">
-			<%=render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>		
-		</div>
-         
+      	<table class="table table-bordered">
+		<tr>
+		<td>	<img src="assets/default_avatar.png" style='width:70px;height:70px'/>	</td>
+      		<td>
+          		<blockquote>
+    				<p><%= post.content %></p>
+       				<small><%= post.posted_by %></small>
+         		
+ 				<div class="posttime">created at  <%= post.created_at %></div>
+			</blockquote>
+		</td>
+		</tr> 
+		<tr>
+			<td></td><td><div class="clearfix">
+				<%=render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
+			</div></td>
+		</tr>
+		<tr>
+			<td></td><td><div class="clearfix">
+				<%=render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>		
+			</div></td>
+		</tr>
+        </table> 
      </div>
   <% end %>
 <% end %>

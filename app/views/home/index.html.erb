@@ -3,9 +3,7 @@
 <% if current_user %>
 <% @post = Post.new %>
 <table class="table"><tr><td>
-<div id="col-md-1">
-<%=render :partial => 'posts/new.html.erb'%>
-</div>
+ 
 </td><td>
 <div id="col-xs-8">
 <%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
@@ -14,10 +12,10 @@
 </br>
 <% end %>
 <script>
-var rf;
 var refreshtime = 5000;
 clearInterval(rf);
 var timelyrefreshPostFeeds; 
+document.getElementById("comment-btn").className = "btn-primary disabled";
 function disable(){
 	clearInterval(rf);
 }

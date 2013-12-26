@@ -1,18 +1,8 @@
+<script>
+
+</script>
 <%= form_for([post, post.comments.build]) do |f| %>
-<table>
-<tr>
-<td>
-   <p>
-   <div id="cbody">
-    <%= f.text_area :body , {:onfocus => "disable()" , :onblur => "enable()"} %>
-	</div>
-  </p>
-</td>
-<td>
-  <p>
-    <%= f.submit %>
-  </p>
-</td>
-</tr>
-</table>
+    <%= f.text_area :body , {:onfocus => "disable()" , :onblur => "enable()" , :required => true} %>
+
+    <%= f.button :Comment , {:class => 'btn-primary' , :id => 'comment-btn'} %>
 <% end %>
