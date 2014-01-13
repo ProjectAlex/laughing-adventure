@@ -32,8 +32,10 @@
     
     </li>
    <% end %>
+   </ul>
   <% if user_signed_in? %>
-    <li class="UserNav">
+  <ul class="nav pull-right">
+    <li>
     	<%= link_to "Logged in as " + current_user.name, current_user %>
     </li>
   <% end %>

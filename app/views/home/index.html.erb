@@ -1,14 +1,17 @@
 <% content_for :title, "Alex" %>
 <h1>Home</h1>
 <% if current_user %>
-<% @post = Post.new %>
-<table class="table"><tr><td>
- 
-</td><td>
-<div id="span8">
-<%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
-</div>
-</td></tr></table>
+  <% @post = Post.new %>
+
+  <div class="row">
+    <div class="span3">
+      <%=render :partial => 'posts/new.html.erb'%>
+    </div>
+    <div class="span8">
+      <%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
+    </div>
+   </div>
+
 </br>
 <% end %>
 <script>
