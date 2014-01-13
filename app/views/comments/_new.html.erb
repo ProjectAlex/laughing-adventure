@@ -4,5 +4,5 @@
 <%= form_for([post, post.comments.build]) do |f| %>
     <%= f.text_area :body , {:onfocus => "disable()" , :onblur => "enable()" , :required => true} %>
 
-    <%= f.button :Comment , {:class => 'btn-primary' , :id => 'comment-btn'} %>
+    <%= f.submit :Comment , {:class => "btn btn-success" } %>
 <% end %>
