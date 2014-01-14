@@ -4,7 +4,7 @@
   <% posts_streams.each do |post| %>
     <div class="postbody"> 
           
-          <div class="postimg"><%= image_tag post.user.avatar.url(:medium) %>
+          <div class="postimg"><%= image_tag "default_avatar.png" %>
           <div class="posttext">
           	<blockquote>
     		<p><%= post.content %></p>
