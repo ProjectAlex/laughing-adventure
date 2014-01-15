@@ -18,3 +18,4 @@ libxslt-dev
 libxml2-dev
 sqlite3
 imagemagick
+libpq-dev
