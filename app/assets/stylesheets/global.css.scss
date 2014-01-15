@@ -12,6 +12,11 @@ transition : all 0.7s;
 {
 padding:5px;
 }
+.postbody:hover
+.delete
+{
+  opacity:1;
+}
 .postimg
 {
 float:left;
@@ -129,4 +134,9 @@ background-repeat:no-repeat;
 background-attachment:fixed;
 background-position:center; 
 filter:blur(4px);
+}
+
+.delete{
+  opacity:0;
+  transition: all 0.7s;
 }

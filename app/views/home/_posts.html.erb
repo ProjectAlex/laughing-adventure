@@ -6,12 +6,18 @@
           
 
       	<div class="row">
-		
-		<div class="span1 postimg">	<img src="assets/default_avatar.png" />	</div>
+		<% @user = User.where(id: post.posted_by_uid).load 
+		@user.name %>
+		<div class="span1 postimg">	<img src="<%= asset_path "assets/default_avatar.png"%>" />	</div>
       		<div class="span6">
 		    <div class="row">
 		      <div class="posttext">
           		<blockquote>
+          		<div class="pull-right delete">
+          		<% if post.posted_by_uid==current_user.id %>
+          		<%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-mini", title: "Detele Post" ,confirm: 'Are you sure?' %>
+                    <% end %>
+                    </div>
     				<p><%= post.content %></p>
        				<small><%= post.posted_by %></small>
                     <!--<%= link_to "Delete", "posts#destroy", :method => :delete %>-->

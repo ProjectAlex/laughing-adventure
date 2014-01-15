@@ -28,8 +28,8 @@ clearInterval(rf);
 <% end %>
 </ul>
 <% if user_signed_in? %>
-    <ul class="nav pull-right">
-        <li><%= image_tag current_user.avatar.url(:thumb),:size=>"30x30" %></li>
+    <ul class="nav pull-right" style="margin-top:5px">
+        <li><%= image_tag current_user.avatar.url(:medium),:size=>"40x40" %></li>
     <li>
     <%= link_to current_user.name, current_user %>
 
