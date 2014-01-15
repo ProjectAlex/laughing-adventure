@@ -9,13 +9,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @user_posts = Post.where(posted_by_uid: @user.id).order('created_at DESC').load
   end
   
   def update
-    @user = User.find(params[:id])
-		@Role = User.find_by_role(:role_ids);
+    @user = User.friendly.find(params[:id])
+		@Role = User.friendly.find_by_role(:role_ids);
     if current_user.has_role? :admin
 			@user.add_role(@role) #will change to admin but nothing else. Form input variable name ? views/users/_users.html.erb?
       redirect_to users_path, :notice => "User updated."
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     
   def destroy
     authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
-    user = User.find(params[:id])
+    user = User.friendly.find(params[:id])
     unless user == current_user
       user.destroy
       redirect_to users_path, :notice => "User deleted."

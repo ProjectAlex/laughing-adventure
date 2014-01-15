@@ -75,6 +75,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    friendly_id (5.0.2)
+      activerecord (~> 4.0.0)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -196,6 +198,7 @@ DEPENDENCIES
   devise
   email_spec
   figaro
+  friendly_id (~> 5.0.0beta1)
   jbuilder (~> 1.2)
   jquery-rails
   paperclip
