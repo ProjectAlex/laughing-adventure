@@ -16,6 +16,8 @@ gem 'figaro'
 gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
 gem 'thin'
+gem 'acts-as-taggable-on'
+
 gem 'friendly_id', '~> 5.0.0beta1'
 group :assets do
   gem 'therubyracer', :platform=>:ruby
