@@ -3,6 +3,7 @@
 <div class="span12 comment">
 <%= comment.body %><br/>
 <small>-<%= comment.commenter %></small><br/>
+<% @user=comment.post.content %>
 </div>
 </div>		
 <% end %>
