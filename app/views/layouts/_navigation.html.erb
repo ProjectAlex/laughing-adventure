@@ -24,6 +24,7 @@ clearInterval(rf);
         <li>
 
     </li>
+
 <% end %>
 </ul>
 <% if user_signed_in? %>
@@ -31,6 +32,7 @@ clearInterval(rf);
         <li><%= image_tag current_user.avatar.url(:thumb),:size=>"30x30" %></li>
     <li>
     <%= link_to current_user.name, current_user %>
+
     </li>
     <a href="#"  
       class="dropdown-toggle"  

@@ -28,7 +28,7 @@ class HomeController < ApplicationController
 
 protected
   def update_poststreams
-  	@posts_streams = Post.order('created_at DESC').all
+  	@posts_streams = Post.order('created_at DESC').load
   end 
  
 end
