@@ -12,7 +12,7 @@ Steps to be followed
     $ sudo xargs -a requirements.txt apt-get install
 - Install all the required gems
     
-    $ bundle install
+    $ bundle install --without production
 - 
 
     $ cp config/database.example config/database.yml
@@ -25,10 +25,3 @@ Steps to be followed
 
     $ rails s
 - go to localhost:3000 in your browser. 
-
-
-
-A user has been created
-name:common 
-email:common@gmail.com
-password:12345678
