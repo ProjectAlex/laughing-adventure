@@ -1,9 +1,13 @@
 <% post.comments.each do |comment| %>
+<% @user=comment.user%>
 <div class="row">
 <div class="span12 comment">
+<div class="row">
+<div class="span1 commentimg">	<%= image_tag @user.avatar.url(:medium),:size=>"40x40" %>	</div>
+<div class="span10">
 <%= comment.body %><br/>
 <small>-<%= comment.commenter %></small><br/>
-<% @user=comment.post.content %>
+</div>
 </div>
 </div>		
 <% end %>

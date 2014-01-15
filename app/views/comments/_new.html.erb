@@ -1,6 +1,3 @@
-<script>
-
-</script>
 <%= form_for([post, post.comments.build]) do |f| %>
     <%= f.text_area :body , {:onfocus => "disable()" , :onblur => "enable()" , :required => true} %>
 
