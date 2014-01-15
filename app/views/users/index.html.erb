@@ -1,3 +1,5 @@
+<%= provide(:title,"Admin Panel") %>
+<% if current_user.id==1 %>
 <h3>Users</h3>
 <div class="span8">
 <table class="table table-condensed">
@@ -29,3 +31,6 @@
   </tbody>
 </table>
 </div>
+<% else %>
+    <meta HTTP-EQUIV="REFRESH" content="0; url=/">
+<% end %>
