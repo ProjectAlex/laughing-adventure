@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     @users = User.all
   end
   def show
-
     @user = User.find(params[:id])
+    @user_posts = Post.where(posted_by_uid: @user.id).order('created_at DESC').load
   end
   
   def update

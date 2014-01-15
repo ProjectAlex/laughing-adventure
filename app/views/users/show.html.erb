@@ -1,4 +1,12 @@
 <h3>User</h3>
+<div class="row">
+<div class="span3">
+<%= image_tag @user.avatar.url(:medium) %><br><br>
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
-<%= image_tag @user.avatar.url(:medium) %>
+</div>
+<div class="span8">
+<div id="postsfeed">
+    <%= render :partial => 'home/posts.html.erb', :locals => { :posts_streams => @user_posts } %>
+</div>
+</div>
