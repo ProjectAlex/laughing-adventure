@@ -1,7 +1,9 @@
 <% post.comments.each do |comment| %>
-<div class="comment">
+<div class="row">
+<div class="span12">
 <%= comment.body %><br/>
 <small>-<%= comment.commenter %></small><br/>
+</div>
 </div>		
 <% end %>
 

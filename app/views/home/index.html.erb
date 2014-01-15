@@ -3,19 +3,29 @@
 
 <h1>Home</h1>
 <% if current_user %>
-<% @post = Post.new %>
-<div id="newpost">
-<%=render :partial => 'posts/new.html.erb'%>
-</div>
-<div id="postsfeed">
-<%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
-</div></br>
+  <% @post = Post.new %>
+
+  <div class="row">
+    <div class="span3">
+      <%=render :partial => 'posts/new.html.erb'%>
+    </div>
+    <div class="span8">
+      <div id="postsfeed">
+      <%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
+      </div>
+    </div>
+   </div>
+
+</br>
 <% end %>
 <script>
+
 var rf;
+
 var refreshtime = 50000;
 clearInterval(rf);
 var timelyrefreshPostFeeds; 
+document.getElementsByName("comment-btn").className = "btn-primary disabled";
 function disable(){
 	clearInterval(rf);
 }
