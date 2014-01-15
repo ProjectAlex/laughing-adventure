@@ -20,23 +20,23 @@ gem 'acts-as-taggable-on'
 
 gem 'friendly_id', '~> 5.0.0beta1'
 group :assets do
-  gem 'therubyracer', :platform=>:ruby
+    gem 'therubyracer', :platform=>:ruby
 end
 group :development do
-  gem 'sqlite3'
+    gem 'sqlite3'
     gem 'mysql2'
-  gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
-  gem 'quiet_assets'
-  gem 'rails_layout'
+    gem 'better_errors'
+    gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+    gem 'quiet_assets'
+    gem 'rails_layout'
 end
 group :development, :test do
-  gem 'rspec-rails'
+    gem 'rspec-rails'
 end
 group :test do
-  gem 'capybara'
-  gem 'database_cleaner', '1.0.1'
-  gem 'email_spec'
+    gem 'capybara'
+    gem 'database_cleaner', '1.0.1'
+    gem 'email_spec'
 end
 group :production do
     gem 'pg'

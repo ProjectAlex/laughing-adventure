@@ -7,7 +7,6 @@
 
       	<div class="row">
 		<%@user = User.where(id: post.posted_by_uid).first %>
-		<div class="span1 postimg">	<%= image_tag @user.avatar.url(:medium) %>	</div>
       		<div class="span6">
 		    <div class="row">
 		      <div class="posttext">
