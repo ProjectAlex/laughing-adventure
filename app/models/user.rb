@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base 
-
   rolify
+  extend FriendlyId
+    friendly_id :name, use: :slugged
 
 after_create :assign_default_role
- 
+  
   def assign_default_role
 	if User.count == 1    
 	add_role(:admin)
