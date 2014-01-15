@@ -18,5 +18,7 @@ end
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :posts
+
   has_attached_file :avatar, :styles => { :large => "500x500" , :medium => "300x300>", :thumb => "10x10>" }, :default_url => "default_avatar.png"
+
 end
