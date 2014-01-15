@@ -10,17 +10,19 @@
       <%=render :partial => 'posts/new.html.erb'%>
     </div>
     <div class="span8">
+      <div id="postsfeed">
       <%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
+      </div>
     </div>
    </div>
 
 </br>
 <% end %>
 <script>
-var refreshtime = 5000;
+var refreshtime = 50000;
 clearInterval(rf);
 var timelyrefreshPostFeeds; 
-document.getElementById("comment-btn").className = "btn-primary disabled";
+document.getElementsByName("comment-btn").className = "btn-primary disabled";
 function disable(){
 	clearInterval(rf);
 }

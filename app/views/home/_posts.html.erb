@@ -2,27 +2,28 @@
 	<div class="empty"><h3> no posts yet </h3></div>
 <% else %>
   <% posts_streams.each do |post| %>
-    <div class="post"> 
+    <div class="postbody"> 
           
 
       	<div class="row">
 		
-		<div class="span1">	<img src="assets/default_avatar.png" style='width:70px;height:70px'/>	</div>
-      		<div class="span7">
+		<div class="span1 postimg">	<img src="assets/default_avatar.png" />	</div>
+      		<div class="span6">
 		    <div class="row">
+		      <div class="posttext">
           		<blockquote>
     				<p><%= post.content %></p>
        				<small><%= post.posted_by %></small>
          		
  				<div class="posttime">created at  <%= post.created_at %></div>
 			</blockquote>
-		    
+		    </div>
 		
-			<div class="span6">
+			<div class="span6 comments">
 				<%=render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
 			</div>
 		
-			<div class="span6">
+			<div class="span6 newcomment">
 				<%=render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>		
 			</div>
 		    </div>
