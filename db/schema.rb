@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116101841) do
+ActiveRecord::Schema.define(version: 20140116113311) do
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(version: 20140116101841) do
     t.integer  "posted_by_uid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "att_file_file_name"
+    t.string   "att_file_content_type"
+    t.integer  "att_file_file_size"
+    t.datetime "att_file_updated_at"
   end
 
   create_table "roles", force: true do |t|

@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(params[:post].permit(:nature,:content,:caption,:user))
+    @post = Post.new(params[:post].permit(:nature,:content,:caption,:user,:att_file))
     @post.posted_by_uid=current_user.id
     @post.posted_by=current_user.name
     #@post.user = current_user
