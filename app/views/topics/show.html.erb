@@ -1,0 +1,6 @@
+<%= provide(:title,@topic.title) %>
+<p id="notice"><%= notice %></p>
+<%= render 'topics/profile_stat_nav' %>
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>

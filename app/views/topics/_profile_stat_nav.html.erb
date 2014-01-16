@@ -1,0 +1,8 @@
+<aside> 
+<h3>
+  <div class="follow_button topic-<%= @topic.id %>">  <%= render 'follow_form', user: @user if signed_in? %></div>
+  <%= image_tag (@topic.gravatar.url), :size => '100x100' %>
+  <%= @topic.title %>
+</h3>
+<h5><%= @topic.desc %></h5>
+</aside>
