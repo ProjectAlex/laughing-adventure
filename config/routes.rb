@@ -4,7 +4,6 @@ LaughingAdventure::Application.routes.draw do
     devise_for :views
     root :to => "home#index"
     devise_for :users, :controllers => {:registrations => "registrations"}
-    match "/:id" ,:to=> "users#show", :via => :get
     resources :users 
     resources :posts do 
         resources :comments
