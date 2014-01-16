@@ -5,18 +5,18 @@ clearInterval(rf);
 <%= link_to "Alex", root_path, :class => 'brand' %>
 <ul class="nav">
     <% if user_signed_in? %>
-    <% if current_user.has_role? :admin %>
+        <% if current_user.has_role? :admin %>
         <li>
     <%= link_to 'Admin', users_path %>
     </li>
 <% end %>
 <% else %>
-</ul>
+    </ul>
 <ul class="nav pull-right">
     <li>
-      <%= link_to 'Login', new_user_session_path %>
-      </li>
-        <li>
+    <%= link_to 'Login', new_user_session_path %>
+    </li>
+    <li>
     <%= link_to 'Sign up', new_user_registration_path %>
     </li>
 <% end %>
@@ -29,22 +29,27 @@ clearInterval(rf);
 </ul>
 <% if user_signed_in? %>
     <ul class="nav pull-right">
-        <li><%= image_tag current_user.avatar.url(:medium), :size => "30x30" %></li>
+    <li><%= image_tag current_user.avatar.url(:medium), :size => "25x25" %></li>
     <li>
     <%= link_to current_user.name, current_user %>
 
     </li>
-    <a href="#"  
-      class="dropdown-toggle"  
-      data-toggle="dropdown"><%= image_tag 'settings.jpg', :size => '30x30' %></a>
-      <ul class="dropdown-menu">  
-      <li>
-      <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-      </li>
-      <li>
-      <%= link_to 'Edit account', edit_user_registration_path %>
-      </li>
 
-<% end %>
+            <a href="#"  
+                class="dropdown-toggle"  
+                data-toggle="dropdown"><img src="http://openclipart.org/image/300px/svg_to_png/170491/1339239106.png" width="20" height="20" />
 
-</ul>
+            </a>
+        </span>
+    </button>
+    <ul class="dropdown-menu">  
+        <li>
+        <%= link_to 'Edit account', edit_user_registration_path %>
+        </li>
+        <li>
+        <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+        </li>
+
+    <% end %>
+
+    </ul>
