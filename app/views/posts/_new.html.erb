@@ -11,9 +11,9 @@
 <%= label_tag(:nature_document, "Document") %>
 </div>
  		<%= f.label :content %>
-    <%= f.text_area :content %>
+        <%= f.text_area :content ,:required => true %>
 		<%= f.label :caption %>
-    <%= f.text_area :caption %><br/>
+        <%= f.text_area :caption , :required => true %><br/>
     <%= f.submit("Post it" , :class => "btn-primary") %>
   </div>
 

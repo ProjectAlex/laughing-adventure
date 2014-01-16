@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115183836) do
+ActiveRecord::Schema.define(version: 20140116091237) do
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20140115183836) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "slug"
+    t.date     "date_of_birth"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
