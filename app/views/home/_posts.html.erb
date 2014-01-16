@@ -14,7 +14,7 @@
           		<blockquote>
           		<div class="pull-right delete">
           		<% if post.posted_by_uid==current_user.id %>
-          		<%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-mini", title: "Detele Post" ,confirm: 'Are you sure?' %>
+          		<%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-mini", title: "Delete Post" ,confirm: 'Are you sure?' %>
                     <% end %>
                     </div>
     				<p><%= post.content %></p>
