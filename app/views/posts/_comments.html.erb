@@ -3,8 +3,13 @@
 <div class="row">
 <div class="span12 comment">
 <div class="row">
-<div class="span1 commentimg">	<%= image_tag @user.avatar.url(:medium),:size=>"25x25" %>	</div>
-<div class="span10">
+<div class="span1 commentimg">	<%= image_tag @user.avatar.url(:medium),:size=>"40x40" %>	</div>
+<div class="span5">
+<div class="pull-right delete">
+          		<% if @user==current_user %>
+          		<%= link_to 'x', [comment.post, comment], method: :delete, class: "btn btn-danger btn-mini", title: "Detele Comment", data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                    </div>
 <%= comment.body %><br/>
 <small>-<%= comment.commenter %></small><br/>
 </div>

@@ -10,4 +10,13 @@ def create
       end
     end
 	end
+	
+def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+    end
+  end
 end
