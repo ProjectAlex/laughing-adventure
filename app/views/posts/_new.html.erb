@@ -13,9 +13,9 @@
  		<%= f.label :content %>
         <%= f.text_area :content ,:required => true %>
 		<%= f.label :caption %>
-        <%= f.text_area :caption , :required => true %><br/>
+        <%= f.text_area :caption %><br/>
         <%= f.label :att_file, "File to Upload" %>
-        <%= f.file_field :att_file, :required => true %>
+        <%= f.file_field :att_file %>
     <%= f.submit("Post it" , :class => "btn-primary") %>
   </div>
 
