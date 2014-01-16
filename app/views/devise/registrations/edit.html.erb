@@ -8,7 +8,9 @@
   <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
   <%= f.input :password_confirmation, :required => false %>
   <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-  <%= f.input :date_of_birth,:required => true%>
+  <%= f.input :date_of_birth,as: :date, start_year: Date.today.year - 90,
+                                    end_year: Date.today.year - 12,
+                                                                  order: [:date,:month, :year] ,:required => true%>
   <%= f.file_field :avatar %>
   <%= f.button :submit, 'Update', :class => 'btn-primary' %>
 <% end %>
