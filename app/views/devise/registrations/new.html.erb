@@ -7,9 +7,7 @@
   <%= f.input :email, :required => true %>
   <%= f.input :password, :required => true %>
   <%= f.input :password_confirmation, :required => true %>
-  <%= f.input :date_of_birth,as: :date, start_year: Date.today.year - 90,
-                                    end_year: Date.today.year - 12,
-                                                                  order: [:date,:month, :year] ,:required => true%>
+  <%= f.input :date_of_birth,:required => true%>
   <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
 <% end %>
 <%= render "devise/shared/links" %>
