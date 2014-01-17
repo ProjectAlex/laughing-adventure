@@ -24,6 +24,7 @@ height:50px;
 width:50px;
 border:solid 1px #d4dae8  ;
 padding:5px;
+overflow:hidden;
 }
 .commentimg
 {
@@ -153,6 +154,12 @@ background-repeat:no-repeat;
 background-attachment:fixed;
 background-position:center; 
 filter:blur(4px);
+}
+
+.postavatar{
+height:100%;
+width:100%;
+overflow:hidden;
 }
 
 .delete{
