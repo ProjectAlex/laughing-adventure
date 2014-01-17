@@ -1,0 +1,23 @@
+<%= render "shared/messages_menu" %>
+<% if @sent_messages.blank? %>
+<label>Sent Items is empty</label>
+<% else %>
+	<table class="table table-hover table-bordered">
+		<thead>
+			<th>Subject</th>
+			<th>To</th>
+			<th></th>
+		</thead>
+		<tbody>
+		<% @sent_messages.each do |message| %>
+			<tr>
+				<td><%=h message.subject %></td>
+				<td><%=h message.recipient_list.map{|user| user.full_name}.join(",") %> at <%=h message.sent_at.to_date %></td>
+				<td>
+					<%= link_to("Show",message_path(:id=>message)) %>
+				</td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+<% end %>

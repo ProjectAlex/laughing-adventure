@@ -1,0 +1,20 @@
+<% action_arr=
+[
+	['new,create','compose','New',"fa fa-comment-o"],
+  ['index','index','Inbox',"fa fa-inbox"],
+  ['sent','sent','Sent',"fa fa-location-arrow"]
+]%>
+<ul class="nav nav-pills">
+  <% action_arr.each do |arr| %>
+  <%  matching_actions,action,display_string,icon_class = arr%>
+  <%  class_name = (matching_actions.split(",").to_a.include?(controller.action_name.downcase)==true)? 'active' : 'plain'%>
+  <li class=<%=class_name%>>
+    <a href=<%= eval("#{action}_messages_path") %> ><%= display_string %> <i class='<%= icon_class %>'></i></a>
+  </li>
+  <% end %>
+</ul>
+<style>
+table tr:hover {
+    cursor: pointer;
+}
+</style>

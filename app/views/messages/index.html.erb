@@ -1,0 +1,26 @@
+<%= render "shared/messages_menu" %>
+<% if @inbox_messages.blank? %>
+<label>Inbox is empty</label>
+<% else %>
+	<table class="table table-hover table-bordered">
+		<thead>
+			<th>Subject</th>
+			<th>Sender</th>
+			<th></th>
+		</thead>
+		<tbody>
+		<% @inbox_messages.each do |message| %>
+			<tr>
+				<td>
+					<% if message.unread? %>
+						<i class="fa fa-sign-in"></i>
+					<% end %>
+					<%=h message.subject %>
+				</td>
+				<td><%=h message.parent.sender.full_name %> at <%=h message.parent.sent_at.to_date %></td>
+				<td><%= link_to("Show",message_path(:id=>message)) %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+<% end %>
