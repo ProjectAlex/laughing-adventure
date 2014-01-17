@@ -10,20 +10,42 @@
         <div class="span1 postimg">	<%= image_tag @user.avatar.url(:medium),:size => "50x50" %>	</div>
       		<div class="span6">
 		    <div class="row">
+		     
 		      <div class="posttext">
-          		<blockquote>
-          		<div class="pull-right delete">
+		      <div class="pull-right delete">
           		<% if post.posted_by_uid==current_user.id %>
           		<%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-mini", title: "Delete Post" ,confirm: 'Are you sure?' %>
                     <% end %>
                     </div>
+		    
+          		<blockquote>
+          		
     				<p><%= post.content %></p>
-       				<small><%= post.posted_by %></small>
-                    <small><%= post.att_file.url %></small>
+       				<small><%= post.posted_by %></small><br>
                     
-         		
+                    
+                    <div class="pull-left">
+			<small><%= post.att_file.url %></small><br>
  				<div class="posttime">created at  <%= post.created_at %></div>
+ 				</div>
+			
+         		  <div class="votebox">
+			<div class="span1">
+                       <a href="" id="<%= post.id %>" name="up" class="votes">
+                       <div class='up'></div><%= post.ups %> likes</a>
+                         </div>
+         <div class="span1">
+                       <a href=""  id="<%= post.id %>"  name="down" class="votes">
+                       <div class='down'></div><%= post.downs %> dislikes</a>
+  </div>
+		      
+		      </div>
+                    
+                    
+                    
 			</blockquote>
+			
+		      
 		    </div>
 		
 			<div class="span6 comments">

@@ -4,9 +4,6 @@ class HomeController < ApplicationController
   def home
   end
 
-
-
-=begin
  def votedup
  @post = Post.find(params[:id])
  @post.ups=@post.ups+1
@@ -20,7 +17,7 @@ class HomeController < ApplicationController
  @post.save
  render :text => "<div class='down'></div>"+@post.downs.to_s+" dislikes"
  end
-=end
+
 
   def refreshposts
   	render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams }

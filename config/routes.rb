@@ -8,8 +8,13 @@ LaughingAdventure::Application.routes.draw do
     resources :posts do 
         resources :comments
     end
+    
+    #For AJAX
     get  "refresh"  => "home#refreshposts", :as => "refresh"
-      post 'users/user_follow'
+    get "votedup"  => "home#votedup", :as => "votedup"
+    get  "voteddown"  => "home#voteddown", :as => "voteddown"
+    
+    post 'users/user_follow'
   post 'users/user_unfollow'
   post 'topics/user_follow'
   post 'topics/user_unfollow'

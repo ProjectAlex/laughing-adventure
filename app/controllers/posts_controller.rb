@@ -27,6 +27,8 @@ class PostsController < ApplicationController
     @post.posted_by_uid=current_user.id
     @post.posted_by=current_user.name
     #@post.user = current_user
+    @post.ups=0
+    @post.downs=0
     @post.save
     respond_to do |format|
       if @post.save
