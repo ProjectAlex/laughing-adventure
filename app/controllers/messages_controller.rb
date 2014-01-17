@@ -15,9 +15,9 @@ class MessagesController < ApplicationController
  def new
  @message = Message.new
  if params[:reply_to]
- @reply_to = User.find_by_beamer_id(params[:reply_to])
+ @reply_to = User.find_by_user_id(params[:reply_to])
  unless @reply_to.nil?
- @message.recepient_id = @reply_to.beamer_id
+ @message.recepient_id = @reply_to.user_id
  end
  end
  end
@@ -35,14 +35,14 @@ class MessagesController < ApplicationController
  end
  
 def show
- @message = Message.readingmessage(params[:id],@user.beamer_id)
+ @message = Message.readingmessage(params[:id],@user.user_id)
  end
  
  def delete_multiple
  if params[:delete]
  params[:delete].each { |id|
  @message = Message.find(id)
- @message.mark_message_deleted(@message.id,@user.beamer_id) unless @message.nil?
+ @message.mark_message_deleted(@message.id,@user.user_id) unless @message.nil?
  }
  flash[:notice] = "Messages deleted"
  end
