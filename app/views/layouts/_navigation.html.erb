@@ -10,8 +10,9 @@ clearInterval(rf);
     <%= link_to 'Admin', users_path %>
     </li>
     <li><%= link_to "Topics",topics_path %></li>
-    <li><a href="<%= index_messages_path %>"><i class="icon-folder-close"></i>Messages</a></li>
+    
 <% end %>
+<li><a href="<%= index_messages_path %>"><i class="icon-folder-close"></i>Messages</a></li>
 <% else %>
     </ul>
 <ul class="nav pull-right">
