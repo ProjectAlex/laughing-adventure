@@ -1,0 +1,23 @@
+<%= render 'shared/messages_menu' %>
+<h4>Subject</h4>
+<label><%= @message.subject %></label>
+<h4>Message</h4>
+<div class="message_body">
+	<%=h message.body %>
+</div>
+<% if !message.trashed? %>
+	<%= simple_form_for @message, :url=> trash_messages_path(:id=>@message), :method=> :post do |f| %>
+		<%= f.submit 'Move to trash',:class=>"btn btn-warning" %>
+	<% end %>
+<% end %>
+<% if message.received? %>
+	<h3>Reply</h3>
+	<%= simple_form_for @message, url: reply_messages_path(:id=>@message), method: :post do |f| %>
+		<fieldset>
+	  	<%= f.input :subject, :label=> false, :input_html=>{ value: "Re: #{@message.subject}"} %>
+	    <%= f.input :body, :label=> false, :required=> false, :placeholder=> 'Reply : Hi, how are you? ...', 	:input_html => {:rows=>5,:style=>'width:100%', :value=>''}%>
+	    <%= f.input :draft, :as=>:boolean, :label=>'Save as Draft?' %>
+	    <%= f.submit 'Reply',:class=>"btn btn-primary" %>
+	  </fieldset>
+  <% end %>
+<% end %>

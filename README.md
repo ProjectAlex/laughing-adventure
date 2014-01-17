@@ -32,3 +32,9 @@ Steps to be followed
     $ mailcatcher
     
 - on browser navigate to http://127.0.0.1:1080/ to view mails that were sent 
+
+License
+----------
+This work is Licensed under the terms of the MIT License
+
+Copyright (c) 2013 ProjectAlex

@@ -5,7 +5,7 @@ margin-bottom:10px;
 margin-right:50px;
 border-bottom:solid 1px #3b5998 ;
 float:right;
-
+width:90%;
 transition : all 0.7s;
 }
 .postbody:hover
@@ -24,6 +24,7 @@ height:50px;
 width:50px;
 border:solid 1px #d4dae8  ;
 padding:5px;
+overflow:hidden;
 }
 .commentimg
 {
@@ -113,7 +114,6 @@ border-radius:10px;
 float:left;
 display:inline;
 padding:10px;
-width:auto;
 transition : all 0.7s;
 }
 .fields:hover{
@@ -146,6 +146,7 @@ white-space: nowrap;
 .newcomment{
 float:right;
 }
+
 body{
 opacity:0.98;
 background-image:url('back.png');
@@ -153,6 +154,12 @@ background-repeat:no-repeat;
 background-attachment:fixed;
 background-position:center; 
 filter:blur(4px);
+}
+
+.postavatar{
+height:100%;
+width:100%;
+overflow:hidden;
 }
 
 .delete{

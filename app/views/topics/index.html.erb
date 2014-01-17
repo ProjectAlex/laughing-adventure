@@ -1,7 +1,7 @@
 <%= provide(:title,"Topics") %>
 <h1>Listing topics</h1>
-
-<table border="1">
+<%= link_to 'New Topic', new_topic_path,class: 'btn btn-success pull-right' %>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Topic', new_topic_path %>
+

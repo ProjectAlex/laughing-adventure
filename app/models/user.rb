@@ -21,5 +21,21 @@ class User < ActiveRecord::Base
 
     has_attached_file :avatar, :styles => { :large => "500x500" , :medium => "300x300>", :thumb => "10x10>" }, :default_url => "default_avatar.png"
     acts_as_follower
+    
+    has_many :received_messages,
+ :class_name => 'Message',
+ :primary_key=>'beamer_id',
+ :foreign_key => 'recepient_id',
+ :order => "messages.created_at DESC",
+ :conditions => ["messages.recepient_deleted = ?", false]
+ 
+def unread_messages?
+ unread_message_count > 0 ? true : false
+ end
+ 
+# Returns the number of unread messages for this user
+ def unread_message_count
+ eval 'messages.count(:conditions => ["recepient_id = ? AND read_at IS NULL", self.beamer_id])'
+ end
 
 end
