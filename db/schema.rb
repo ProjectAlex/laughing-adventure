@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20140117065721) do
   create_table "messages", force: true do |t|
     t.string   "sender_id",                           null: false
     t.string   "recepient_id"
-    t.boolean  "sender_deleted"
-    t.boolean  "recepient_deleted"
+    t.boolean  "sender_deleted",    default: false
+    t.boolean  "recepient_deleted", default: false
     t.string   "subject",                             null: false
     t.text     "body"
     t.datetime "read_at"

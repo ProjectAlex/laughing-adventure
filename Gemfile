@@ -17,7 +17,7 @@ gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
 gem 'thin'
 gem 'acts_as_follower'
-
+gem 'debugger' #for debugging
 gem 'friendly_id', '~> 5.0.0beta1'
 group :assets do
     gem 'therubyracer', :platform=>:ruby

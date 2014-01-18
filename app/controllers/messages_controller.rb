@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
  before_filter :set_user
  
  def index
+   debugger
  if params[:mailbox] == "sent"
  @messages = @user.sent_messages
  elsif params[:mailbox] == "inbox"
