@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140117065721) do
     t.string   "subject",                             null: false
     t.text     "body"
     t.datetime "read_at"
+    t.datetime "sent_at"
     t.string   "container",         default: "draft"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -3,14 +3,20 @@ class MessagesController < ApplicationController
  before_filter :set_user
  
  def index
-   debugger
- if params[:mailbox] == "sent"
- @messages = @user.sent_messages
- elsif params[:mailbox] == "inbox"
+   
+ #if params[:mailbox] == "sent"
+ #@messages = @user.sent_messages
+ #elsif params[:mailbox] == "inbox"
  @messages = @user.received_messages
+ #@messages = Message.all
+ #@messages = Message.where(:recepient_id => @user.id).all
  #elsif params[:mailbox] == "archieved"
  # @messages = @user.archived_messages
+ #end
  end
+ 
+ def sent   
+ @sent_messages = @user.sent_messages
  end
  
  def new
@@ -26,6 +32,8 @@ class MessagesController < ApplicationController
  def create
  @message = Message.new(params[:message].permit(:recepient_id,:subject,:body))
  @message.sender_id = current_user.id
+
+ @message.sent_at = Time.now
  if @message.save
  flash[:notice] = "Message has been sent"
  #redirect_to user_messages_path(current_user, :mailbox=>:inbox)

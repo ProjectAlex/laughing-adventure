@@ -1,11 +1,18 @@
 class Message < ActiveRecord::Base
-belongs_to :sender,
+
+ validates_presence_of :subject, :message => "Please enter message title"
+ private
+  def app_params
+    params.require(:list).permit(:subject, :body, :sender_id, :recepient_id, :read_at,:sender_deleted,:recepient_deleted)
+  end
+  
+  belongs_to :sender,
  :class_name => 'User',
- :primary_key => 'user_id',
+ :primary_key => 'id',
  :foreign_key => 'sender_id'
 belongs_to :recepient,
  :class_name => 'User',
- :primary_key => 'user_id',
+ :primary_key => 'id',
  :foreign_key => 'recepient_id'
 
  
@@ -22,7 +29,9 @@ belongs_to :recepient,
  message = find(id, :conditions => ["sender_id = ? OR recepient_id = ?", reader, reader])
  if message.read_at.nil? && (message.recepient.user_id==reader)
  message.read_at = Time.now
- message.save!
+ message.savattr_accessible :subject, :body, :sender_id, :recepient_id, :read_at,:sender_deleted,:recepient_deleted
+ validates_presence_of :subject, :message => "Please enter message title"
+ e!
  end
  message
  end

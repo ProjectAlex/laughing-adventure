@@ -12,7 +12,7 @@
 		<% @sent_messages.each do |message| %>
 			<tr>
 				<td><%=h message.subject %></td>
-				<td><%=h message.recipient_list.map{|user| user.full_name}.join(",") %> at <%=h message.sent_at.to_date %></td>
+				<td><%=h message.recepient.name %> at <%=h message.sent_at.to_date %></td>
 				<td>
 					<%= link_to("Show",message_path(:id=>message)) %>
 				</td>

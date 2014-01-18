@@ -24,11 +24,26 @@ class User < ActiveRecord::Base
     
     has_many :received_messages,
  :class_name => 'Message',
- :primary_key=>'user_id',
+ :primary_key=>'id',
+ :foreign_key => 'recepient_id',
+ :order => "messages.created_at DESC",
+ :conditions => ["messages.recepient_deleted = ?", false]
+    
+    has_many :sent_messages,
+ :class_name => 'Message',
+ :primary_key=>'id',
  :foreign_key => 'recepient_id',
  :order => "messages.created_at DESC",
  :conditions => ["messages.recepient_deleted = ?", false]
  
+ def received_messages
+  Message.where(:recepient_id => self.id).order('sent_at DESC').load
+ end
+ 
+ def sent_messages
+  Message.where(:sender_id => self.id).order('sent_at DESC').load
+ end
+    
 def unread_messages?
  unread_message_count > 0 ? true : false
  end

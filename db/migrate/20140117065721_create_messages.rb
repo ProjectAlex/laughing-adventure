@@ -7,6 +7,7 @@ class CreateMessages < ActiveRecord::Migration
 	t.string :subject,:null => false
 	t.text :body
 	t.datetime :read_at
+	t.datetime :sent_at
 	t.string :container,:default => "draft"
 
       t.timestamps
