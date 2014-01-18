@@ -44,7 +44,13 @@ class MessagesController < ApplicationController
  end
  
 def show
- @message = Message.readingmessage(params[:id],@user.user_id)
+ @message = Message.readingmessage(params[:id],@user.id)
+ end
+ 
+ def trash
+   @message=Message.find(params[:id])
+   @message.destroy 
+   redirect_to messages_path
  end
  
  def delete_multiple

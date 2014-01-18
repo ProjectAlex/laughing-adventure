@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
   def app_params
     params.require(:list).permit(:subject, :body, :sender_id, :recepient_id, :read_at,:sender_deleted,:recepient_deleted)
   end
-  
+  public
   belongs_to :sender,
  :class_name => 'User',
  :primary_key => 'id',
@@ -27,11 +27,9 @@ belongs_to :recepient,
 # Read message and if it is read by recepient then mark it is read
  def self.readingmessage(id, reader)
  message = find(id, :conditions => ["sender_id = ? OR recepient_id = ?", reader, reader])
- if message.read_at.nil? && (message.recepient.user_id==reader)
+ if message.read_at.nil? && (message.recepient.id==reader)
  message.read_at = Time.now
- message.savattr_accessible :subject, :body, :sender_id, :recepient_id, :read_at,:sender_deleted,:recepient_deleted
- validates_presence_of :subject, :message => "Please enter message title"
- e!
+ message.save!
  end
  message
  end
@@ -39,6 +37,14 @@ belongs_to :recepient,
 # Based on if a message has been read by it's recepient returns true or false.
  def read?
  self.read_at.nil? ? false : true
+ end
+ 
+ def trashed?
+ false
+ end
+ 
+ def received?
+ true
  end
 
 
