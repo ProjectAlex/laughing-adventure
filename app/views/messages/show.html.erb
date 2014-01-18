@@ -7,7 +7,7 @@
 </div>
 <% if !@message.trashed? %>
 	<%= simple_form_for @message, :url=> trash_messages_path(:id=>@message), :method=> :post do |f| %>
-		<%= f.submit 'Move to trash',:class=>"btn btn-warning" %>
+		<%= f.submit 'Delete Message',:class=>"btn btn-warning" %>
 	<% end %>
 <% end %>
 <% if @message.received? %>

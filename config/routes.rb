@@ -19,7 +19,7 @@ LaughingAdventure::Application.routes.draw do
     end
   end
     
-    
+    patch 'show', :to=> 'messages#show', :as=> :show
     
     #For AJAX
     get  "refresh"  => "home#refreshposts", :as => "refresh"

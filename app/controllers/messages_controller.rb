@@ -48,7 +48,7 @@ def show
  end
  
  def trash
-   @message=Message.find(params[:id])
+   @message=Message.friendly.find(params[:id])
    @message.destroy 
    redirect_to messages_path
  end
@@ -56,7 +56,7 @@ def show
  def delete_multiple
  if params[:delete]
  params[:delete].each { |id|
- @message = Message.find(id)
+ @message = Message.friendly.find(id)
  @message.mark_message_deleted(@message.id,@user.user_id) unless @message.nil?
  }
  flash[:notice] = "Messages deleted"

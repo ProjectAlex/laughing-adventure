@@ -1,5 +1,6 @@
 class Message < ActiveRecord::Base
-
+  extend FriendlyId
+    friendly_id :subject, use: :slugged
  validates_presence_of :subject, :message => "Please enter message title"
  private
   def app_params
@@ -26,7 +27,7 @@ belongs_to :recepient,
  
 # Read message and if it is read by recepient then mark it is read
  def self.readingmessage(id, reader)
- message = find(id, :conditions => ["sender_id = ? OR recepient_id = ?", reader, reader])
+ message = friendly.find(id, :conditions => ["sender_id = ? OR recepient_id = ?", reader, reader])
  if message.read_at.nil? && (message.recepient.id==reader)
  message.read_at = Time.now
  message.save!
