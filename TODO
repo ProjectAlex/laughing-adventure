@@ -1,0 +1,6 @@
+1) Search 
+2) Functioning of "Follow" for topics. 
+3) Feed based on "Following"
+4) Auto Completion of topics while adding to the Post
+5) Will_Paginate gem
+6) Add restrictions to the files, once the post type is selected
