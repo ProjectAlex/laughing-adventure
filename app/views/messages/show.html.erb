@@ -17,8 +17,7 @@
 		<fieldset>
 	  	<%= f.input :subject, :label=> false, :input_html=>{ value: "Re: #{@message.subject}"} %>
 	    <%= f.input :body, :label=> false, :required=> false, :placeholder=> 'Reply : Hi, how are you? ...', 	:input_html => {:rows=>5,:style=>'width:100%', :value=>''}%>
-	    <%= #f.input :draft, :as=>:boolean, :label=>'Save as Draft?' 
-	    %>
+	    <%= f.input :container, :as=>:boolean, :label=>'Save as Draft?' %>
 	    <%= f.submit 'Reply',:class=>"btn btn-primary" %>
 	  </fieldset>
   <% end %>
