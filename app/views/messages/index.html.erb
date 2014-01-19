@@ -12,12 +12,13 @@
 		<% @messages.each do |message| %>
 			<tr>
 				<td>
-					<% #if message.unread?
-					%>
-						<i class="fa fa-sign-in"></i>
-					<% # end 
-					%>
-					<%=h message.subject %>
+					<% if !message.read? %>
+						<b>
+					<%  end %>
+					<%=h message.subject %> 
+					<% if !message.read? %>
+						</b>
+					<%  end %>
 				</td>
 				<td><%=h message.sender.name %> at <%=h message.sent_at.to_date %></td>
 				<td><%= link_to("Show",message_path(:id=>message)) %></td>
