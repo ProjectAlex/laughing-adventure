@@ -10,6 +10,7 @@
 	%>
 	<%= f.input :subject,:label=> false,:placeholder=>'enter title ...' %>
 	<%= f.input :body, :label=> false, :required=> false, :placeholder=> 'Hi, how are you? ...',:input_html => {:rows=>5,:style=>'width:100%'} %>
+	<%= f.input :container, :as=>:boolean, :label=>'Save as Draft?' %>
 	<%= f.button :submit,'Send Message',:class=>"btn btn-primary" %>
 	</fieldset>
 <% end %>
