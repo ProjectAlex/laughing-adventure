@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
     has_attached_file :avatar, :styles => { :large => "500x500" , :medium => "300x300>", :thumb => "10x10>" }, :default_url => "default_avatar.png"
     acts_as_follower
     
+    scope :confirmed, where("confirmed_at IS NOT NULL")
+    
     has_many :received_messages,
  :class_name => 'Message',
  :primary_key=>'id',
