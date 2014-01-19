@@ -25,15 +25,16 @@
 
                         <blockquote>
 
+                            <h2><%= post.nature %></h2>
                             <p><%= post.content %></p>
                             <small><%= post.posted_by %></small><br>
 
 
                             <div class="pull-left">
-                                <% if post.type == "Image" %>
+                                <% if post.nature == "image" %>
                                     <%= image_tag post.att_file.url %>
                             <% else %>
-                                    <small><%= post.att_file.url %></small><br>
+                                    <small><%= link_to "Download file",post.att_file.url %></small><br>
                             <% end %>
                                 <div class="posttime">created at  <%= post.created_at %></div>
                             </div>
