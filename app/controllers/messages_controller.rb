@@ -43,6 +43,20 @@ class MessagesController < ApplicationController
  end
  end
  
+ def reply
+ @reply_message = Message.new(params[:message].permit(:subject,:body))
+ @reply_message.recepient_id = Message.friendly.find(params[:id]).sender_id
+ @reply_message.sender_id = current_user.id
+ @reply_message.sent_at = Time.now
+ if @reply_message.save
+ flash[:notice] = "Message has been sent"
+ #redirect_to user_messages_path(current_user, :mailbox=>:inbox)
+ redirect_to root_path
+ else
+ render :action => :new
+ end
+ end
+ 
 def show
  @message = Message.readingmessage(params[:id],@user.id)
  end
