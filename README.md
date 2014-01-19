@@ -15,7 +15,7 @@ Steps to be followed
     $ bundle install --without production
 - 
 
-    $ cp config/database.example config/database.yml
+    $ sh configure.sh
     
     Note: You will have to modify the file config/database.yml in case you want to shift the DB to mysql, postgres or something. 
 - 
