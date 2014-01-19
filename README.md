@@ -38,10 +38,11 @@ Steps to be followed
 - go to localhost:3000 in your browser. 
 
 - Development sites (The servers might not be on all the time) at 
+
+
         - http://17748bc1.ngrok.com/  
         - https://56374f6c.ngrok.com/
 License
 ----------
-This work is Licensed under the terms of the MIT License
-
-Copyright (c) 2013 ProjectAlex
+>This work is Licensed under the terms of the MIT License
+>Copyright (c) 2013 ProjectAlex
