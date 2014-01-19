@@ -4,7 +4,10 @@
 <% end %>
 <%= simple_form_for(@message) do |f| %>
 	<fieldset>
-	<%= f.input :recepient_id, label: 'Sent To' %>
+	<%= f.select(:recepient_id, User.where.not(:id => current_user.id).pluck(:name,:id)) 
+	%>
+	<%= #f.input :recepient_id, label: 'Sent To' 
+	%>
 	<%= f.input :subject,:label=> false,:placeholder=>'enter title ...' %>
 	<%= f.input :body, :label=> false, :required=> false, :placeholder=> 'Hi, how are you? ...',:input_html => {:rows=>5,:style=>'width:100%'} %>
 	<%= f.button :submit,'Send Message',:class=>"btn btn-primary" %>
