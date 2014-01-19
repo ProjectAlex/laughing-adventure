@@ -5,7 +5,7 @@
 <% end %>
 <%= simple_form_for(@message) do |f| %>
 	<fieldset>
-	<%= f.select(:recepient_id, User.where.not(:id => current_user.id).pluck(:name,:id)) %>
+	<%= f.select(:recepient_id, User.confirmed.where.not(:id => current_user.id).pluck(:name,:id)) %>
 	<%= #f.input :recepient_id, label: 'Sent To' 
 	%>
 	<%= f.input :subject,:label=> false,:placeholder=>'enter title ...' %>
