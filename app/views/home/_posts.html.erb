@@ -1,71 +1,75 @@
 <% if posts_streams.empty? %>
-	<div class="empty"><h3> no posts yet </h3></div>
+    <div class="empty"><h3> no posts yet </h3></div>
 <% else %>
-  <% posts_streams.each do |post| %>
+    <% posts_streams.each do |post| %>
     <div class="postbody"> 
-          
 
-      	<div class="row">
-		<%@user = User.where(id: post.posted_by_uid).first %>
-		<% if params[:controller]=='home'%>
-        <div class="span1 postimg">	<%= image_tag @user.avatar.url(:medium),:size => "50x50",class: 'postavatar' %>	</div>
-        
-      		<div class="span7">
-      		<% else %>
-      		<div class="span8">
-      		<% end %>
-		    <div class="row">
-		     
-		      <div class="posttext">
-		      <div class="pull-right delete">
-          		<% if post.posted_by_uid==current_user.id %>
-          		<%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-mini", title: "Delete Post" ,confirm: 'Are you sure?' %>
-                    <% end %>
+
+    <div class="row">
+        <%@user = User.where(id: post.posted_by_uid).first %>
+        <% if params[:controller]=='home'%>
+            <div class="span1 postimg">	<%= image_tag @user.avatar.url(:medium),:size => "50x50",class: 'postavatar' %>	</div>
+
+        <div class="span7">
+        <% else %>
+                <div class="span8">
+            <% end %>
+                <div class="row">
+
+                    <div class="posttext">
+                        <div class="pull-right delete">
+                            <% if post.posted_by_uid==current_user.id %>
+                                <%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-mini", title: "Delete Post" ,confirm: 'Are you sure?' %>
+                        <% end %>
+                        </div>
+
+                        <blockquote>
+
+                            <p><%= post.content %></p>
+                            <small><%= post.posted_by %></small><br>
+
+
+                            <div class="pull-left">
+                                <% if post.type == "Image" %>
+                                    <%= image_tag post.att_file.url %>
+                            <% else %>
+                                    <small><%= post.att_file.url %></small><br>
+                            <% end %>
+                                <div class="posttime">created at  <%= post.created_at %></div>
+                            </div>
+
+                            <div class="votebox">
+                                <div class="span1">
+                                    <a href="" id="<%= post.id %>" name="up" class="votes">
+                                        <div class='up'></div><%= post.ups %> likes</a>
+                                </div>
+                                <div class="span1">
+                                    <a href=""  id="<%= post.id %>"  name="down" class="votes">
+                                        <div class='down'></div><%= post.downs %> dislikes</a>
+                                </div>
+
+                            </div>
+
+
+
+                        </blockquote>
+
+
                     </div>
-		    
-          		<blockquote>
-          		
-    				<p><%= post.content %></p>
-       				<small><%= post.posted_by %></small><br>
-                    
-                    
-                    <div class="pull-left">
-			<small><%= post.att_file.url %></small><br>
- 				<div class="posttime">created at  <%= post.created_at %></div>
- 				</div>
-			
-         		  <div class="votebox">
-			<div class="span1">
-                       <a href="" id="<%= post.id %>" name="up" class="votes">
-                       <div class='up'></div><%= post.ups %> likes</a>
-                         </div>
-         <div class="span1">
-                       <a href=""  id="<%= post.id %>"  name="down" class="votes">
-                       <div class='down'></div><%= post.downs %> dislikes</a>
-  </div>
-		      
-		      </div>
-                    
-                    
-                    
-			</blockquote>
-			
-		      
-		    </div>
-		
-			<div class="span6 comments">
-				<%=render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
-			</div>
-		
-			<div class="span6 newcomment">
-				<%=render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>		
-			</div>
-		    </div>
 
-		</div>
-		</div>
-		
-     </div>
-  <% end %>
+                    <div class="span6 comments">
+                        <%=render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
+                    </div>
+
+                    <div class="span6 newcomment">
+                        <%=render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>		
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 <% end %>
-    
+<% end %>
+
