@@ -31,7 +31,7 @@ class HomeController < ApplicationController
     @post.ups=@post.ups-1
   end
   @post.save
-  render :text => "<div class='up'></div>"+@post.ups.to_s+" dislikes"
+  render :text => "<div class='down'></div>"+@post.downs.to_s+" dislikes"
  end
 
 
