@@ -42,6 +42,10 @@ Steps to be followed
     
 - on browser navigate to http://127.0.0.1:1080/ to view mails that were sent 
 
+
+        - http://17748bc1.ngrok.com/  
+        - https://56374f6c.ngrok.com/
+	- https://alex.ngrok.com/
 License
 ----------
 >This work is Licensed under the terms of the MIT License
