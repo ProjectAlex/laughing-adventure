@@ -39,6 +39,8 @@ GEM
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.1.4)
+    call-me (0.0.2.3)
+      refining
     cancan (1.6.10)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -81,6 +83,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    ffi (1.9.3)
+    ffi-extra (0.1.0)
+      ffi
+    ffi-inline (0.0.4.3)
+      ffi (>= 0.4.0)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -88,6 +95,7 @@ GEM
       activerecord (~> 4.0.0)
     hike (1.2.3)
     i18n (0.6.5)
+    iso-639 (0.2.4)
     jbuilder (1.5.2)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -139,6 +147,7 @@ GEM
     rake (10.1.1)
     redis (3.0.6)
     ref (1.0.5)
+    refining (0.0.5.5)
     rolify (3.2.0)
     rsolr (1.0.9)
       builder (>= 2.1.2)
@@ -186,6 +195,11 @@ GEM
       rails (>= 3)
       sunspot (= 2.1.0)
     sunspot_solr (2.1.0)
+    tesseract-ocr (0.1.5)
+      call-me
+      ffi-extra
+      ffi-inline
+      iso-639
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
@@ -245,6 +259,7 @@ DEPENDENCIES
   sqlite3
   sunspot_rails
   sunspot_solr
+  tesseract-ocr
   therubyracer
   thin
   turbolinks
