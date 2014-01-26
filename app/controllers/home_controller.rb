@@ -14,9 +14,10 @@ class HomeController < ApplicationController
   @dislikercheck=@post.dislikers.where(:id == current_user.id).first
   if (!@dislikercheck.nil?)
     @post.downs=@post.downs-1
+    @post.dislikers.delete(current_user)
   end
   @post.save
-  render :text => "<div class='up'></div>"+@post.ups.to_s+" likes"
+  render :text => "<div class='up'></div>"+@post.ups.to_s+" likes <<<<<<<< <div class='down'></div>"+@post.downs.to_s+" dislikes"
  end
 
  def voteddown
@@ -29,9 +30,10 @@ class HomeController < ApplicationController
   @likercheck=@post.likers.where(:id == current_user.id).first
   if (!@likercheck.nil?)
     @post.ups=@post.ups-1
+    @post.likers.delete(current_user)
   end
   @post.save
-  render :text => "<div class='down'></div>"+@post.downs.to_s+" dislikes"
+  render :text => "<div class='up'></div>"+@post.ups.to_s+" likes <<<<<<<< <div class='down'></div>"+@post.downs.to_s+" dislikes"
  end
 
 
