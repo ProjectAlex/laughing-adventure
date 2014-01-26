@@ -14,9 +14,12 @@ libx11-dev
 libxtst-dev 
 pkg-config
 libcurl4-openssl-dev 
-libxslt-dev 
+libxslt1-dev 
 libxml2-dev
 sqlite3
 imagemagick
 libpq-dev
 libmysqlclient-dev
+libleptonica-dev libtesseract-dev
+tesseract-ocr tesseract-ocr-eng tesseract-ocr-nld imagemagick
+
