@@ -1,6 +1,4 @@
 LaughingAdventure::Application.routes.draw do
-  resources :topics
-
     devise_for :views
     root :to => "home#index"
     devise_for :users, :controllers => {:registrations => "registrations"}
