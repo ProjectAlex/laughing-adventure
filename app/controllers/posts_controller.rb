@@ -32,7 +32,7 @@ class PostsController < ApplicationController
         @post.downs=0
         e = Tesseract::Engine.new {|e|
             e.language  = :eng
-            e.blacklist = '|'
+            e.blacklist = ['1234567890','of']
         }
 
         @post.save
