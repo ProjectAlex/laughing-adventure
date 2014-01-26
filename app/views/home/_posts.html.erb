@@ -28,6 +28,8 @@
                             <h2><%= post.nature %></h2>
                             <p><%= post.content %></p>
                             <small><%= post.posted_by %></small><br>
+                               <p> Tags: <%= raw post.tag_list.map { |t| link_to t, t }.join(', ') %>
+
 
 
                             <div class="pull-left">
