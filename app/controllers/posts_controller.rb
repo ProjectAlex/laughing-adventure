@@ -41,13 +41,12 @@ class PostsController < ApplicationController
                 ocr_link=('~/laughing-adventure/public'+@post.att_file.url).split('?')
                 #Here the adding of tags starts
                 begin
-                    x = word_frequencies(e.text_for(ocr_link[0]).strip,3)
+                    x = word_frequencies(e.text_for(ocr_link[0]+@post.content+@post.caption).strip,3)
                 rescue
                     puts "Couldn't find the frequency"
                 end
                 puts "----------------------"
-                puts "tags" 
-                puts x
+                puts "tags"  
                 puts "----------------------"
                 @post.tag_list.add(x)
                 @post.save
