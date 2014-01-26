@@ -38,14 +38,9 @@ class PostsController < ApplicationController
         @post.save
         respond_to do |format|
             if @post.save
-		@path= Rails.root.to_s() + '/public' +@post.att_file.url
-		
-		puts @path;
-		puts Rails.root.to_s();
-                ocr_link=(@path).split('?')
-		puts ocr_link
-                debugger
-		#Here the adding of tags starts
+		path= '../public' +@post.att_file.url
+                ocr_link=(path).split('?')
+                #Here the adding of tags starts
                 x=[]
 		y=[]
                 z=[]
