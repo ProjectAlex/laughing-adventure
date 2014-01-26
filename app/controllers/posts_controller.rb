@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
     # POST /posts
     def create
-        @post = Post.new(params[:post].permit(:nature,:content,:caption,:user,:att_file))
+        @post = Post.new(params[:post].permit(:nature,:content,:caption,:user,:att_file,:tags_list))
         @post.posted_by_uid=current_user.id
         @post.posted_by=current_user.name
         #@post.user = current_user
@@ -39,8 +39,19 @@ class PostsController < ApplicationController
         respond_to do |format|
             if @post.save
                 ocr_link=('~/laughing-adventure/public'+@post.att_file.url).split('?')
-                puts ocr_link[0]
-                puts e.text_for(ocr_link[0]).strip
+                #Here the adding of tags starts
+                begin
+                    x = word_frequencies(e.text_for(ocr_link[0]).strip,3)
+                rescue
+                    puts "Couldn't find the frequency"
+                end
+                puts "----------------------"
+                puts "tags" 
+                puts x
+                puts "----------------------"
+                @post.tag_list.add(x)
+                @post.save
+                #Ends here (hopefully)
                 format.html { redirect_to root_path }
                 format.json { render :json => @post, :status => :created, :location => @post }
             else
@@ -48,6 +59,35 @@ class PostsController < ApplicationController
                 format.json { render :json => @post.errors, :status => :unprocessable_entity }
             end
         end
+    end
+    def word_frequencies(string, n)
+        words = string.split(/\s/)  # O(n)
+        max = 0
+        min = Float::INFINITY
+        frequencies = words.inject(Hash.new(0)) do |hash,word|  # O(k)
+            occurrences = hash[word] += 1                     # O(1)
+            max = occurrences if occurrences > max            # O(1)
+            min = occurrences if occurrences < min            # O(1)
+            hash;                                             # O(1)  
+        end
+
+        ### perform a counting sort ###
+        sorted = Array.new(max + words.length)
+
+        delta = 0
+
+        frequencies.each do |word, frequency|   #O(k)
+            #p word + "--" + frequency.to_s
+            index = frequency
+            if sorted[index]
+                sorted[index] = sorted[index].push(word)  # ??? I think O(1).
+            else
+                sorted[index] = [word]                    # O(1)
+            end
+        end
+
+        return sorted.compact.flatten[-n..-1].reverse   
+        ### Compact is O(k).  Flatten is O(k).  Reverse is O(k). So O(3k)
     end
 
     # PUT /posts/1

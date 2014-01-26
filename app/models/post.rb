@@ -9,4 +9,5 @@ class Post < ActiveRecord::Base
    has_and_belongs_to_many :dislikers,
  :class_name => 'User',
  :join_table => :dislikers
+   acts_as_taggable
 end
