@@ -38,7 +38,7 @@ class PostsController < ApplicationController
         @post.save
         respond_to do |format|
             if @post.save
-		@path= Root.path.to_s() + '/public' +@post.att_file.url
+		@path= Rails.root.to_s() + '/public' +@post.att_file.url
                 ocr_link=(@path).split('?')
                 #Here the adding of tags starts
 		x=[]
