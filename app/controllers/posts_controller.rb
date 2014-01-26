@@ -38,9 +38,16 @@ class PostsController < ApplicationController
         @post.save
         respond_to do |format|
             if @post.save
-                ocr_link=('~/laughing-adventure/public'+@post.att_file.url).split('?')
-                #Here the adding of tags starts
-                y=[]
+		@path= Rails.root.to_s() + '/public' +@post.att_file.url
+		
+		puts @path;
+		puts Rails.root.to_s();
+                ocr_link=(@path).split('?')
+		puts ocr_link
+                debugger
+		#Here the adding of tags starts
+                x=[]
+		y=[]
                 z=[]
                 begin
                     a=e.text_for(ocr_link[0]).strip
