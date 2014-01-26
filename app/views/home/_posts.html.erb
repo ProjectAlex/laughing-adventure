@@ -34,7 +34,7 @@
 
                             <div class="pull-left">
                                 <% if post.nature == "image" %>
-                                    <%= image_tag post.att_file.url %>
+                                    <%= image_tag post.att_file.url , size:"200"%>
                             <% else %>
                                     <small><%= link_to "Download file",post.att_file.url %></small><br>
                             <% end %>
