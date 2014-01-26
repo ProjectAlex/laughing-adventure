@@ -40,12 +40,13 @@ class PostsController < ApplicationController
             if @post.save
                 ocr_link=('~/laughing-adventure/public'+@post.att_file.url).split('?')
                 #Here the adding of tags starts
+		x=[]
                 y=[]
                 z=[]
                 begin
                     a=e.text_for(ocr_link[0]).strip
                     x = word_frequencies(a+" "+@post.caption,5)
-                    y= @post.content.split(' ')
+                    y= @poset.content.split(' ')
                     #z= @post.caption.split(' ')
                 rescue
                     puts "------------------------"
