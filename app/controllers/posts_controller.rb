@@ -40,15 +40,22 @@ class PostsController < ApplicationController
             if @post.save
                 ocr_link=('~/laughing-adventure/public'+@post.att_file.url).split('?')
                 #Here the adding of tags starts
+                y=[]
+                z=[]
                 begin
-                    x = word_frequencies(e.text_for(ocr_link[0]+@post.content+@post.caption).strip,3)
+                    a=e.text_for(ocr_link[0]).strip
+                    x = word_frequencies(a+" "+@post.caption,5)
+                    y= @post.content.split(' ')
+                    #z= @post.caption.split(' ')
                 rescue
+                    puts "------------------------"
                     puts "Couldn't find the frequency"
+                    puts "------------------------"
                 end
                 puts "----------------------"
                 puts "tags"  
                 puts "----------------------"
-                @post.tag_list.add(x)
+                @post.tag_list.add(x+y)
                 @post.save
                 #Ends here (hopefully)
                 format.html { redirect_to root_path }
