@@ -19,7 +19,7 @@ gem 'thin'
 gem 'soulmate_rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem 'acts_as_follower'
+gem 'acts-as-taggable-on'
 gem 'debugger' #for debugging
 gem 'friendly_id', '~> 5.0.0beta1'
 group :assets do
