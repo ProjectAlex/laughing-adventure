@@ -26,6 +26,9 @@
                         <blockquote>
 
                             <h2><%= post.nature %></h2>
+                            <% if post.nature == "image" %>
+                                    <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200'}".html_safe , post.att_file.url%>
+                                    <% end %>
                             <p><%= post.content %></p>
                             <small><%= post.posted_by %></small><br>
                                <p> Tags: <%= raw post.tag_list.map { |t| link_to t, t }.join(', ') %>
@@ -33,14 +36,13 @@
 
 
                             <div class="pull-left">
-                                <% if post.nature == "image" %>
-                                    <%= image_tag post.att_file.url , size:"200"%>
-                            <% else %>
+                               
+                            <% if post.nature == "document"%>
                                     <small><%= link_to "Download file",post.att_file.url %></small><br>
                             <% end %>
                                 <div class="posttime">created at  <%= post.created_at %></div>
                             </div>
-
+ 
                             <div class="votebox">
                                 <div class="span1">
                                     <a href="" id="<%= post.id %>" name="up" class="votes">
