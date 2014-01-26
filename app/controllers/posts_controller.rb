@@ -47,8 +47,8 @@ class PostsController < ApplicationController
                 z=[]
                 begin
                     a=e.text_for(ocr_link[0]).strip
+		    y= @post.content.split(' ')
                     x = word_frequencies(a+" "+@post.caption,5)
-                    y= @poset.content.split(' ')
                     #z= @post.caption.split(' ')
                 rescue
                     puts "------------------------"
