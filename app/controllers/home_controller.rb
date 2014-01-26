@@ -17,7 +17,7 @@ class HomeController < ApplicationController
     @post.dislikers.delete(current_user)
   end
   @post.save
-  render :text => "<div class='up'></div>"+@post.ups.to_s+" likes"
+  render :text => "<div class='up'></div>"+@post.ups.to_s+" likes <<<<<<<< <div class='down'></div>"+@post.downs.to_s+" dislikes"
  end
 
  def voteddown
@@ -33,7 +33,7 @@ class HomeController < ApplicationController
     @post.likers.delete(current_user)
   end
   @post.save
-  render :text => "<div class='down'></div>"+@post.downs.to_s+" dislikes"
+  render :text => "<div class='up'></div>"+@post.ups.to_s+" likes <<<<<<<< <div class='down'></div>"+@post.downs.to_s+" dislikes"
  end
 
 

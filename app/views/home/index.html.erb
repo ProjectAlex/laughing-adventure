@@ -54,14 +54,18 @@ $(document).ready(function(){
 
 			$.get('/votedup', {id: id},
 				function(data,status){
-				parent.html(data);
+				data=data.split("<<<<<<<<");
+				parent.parent().parent().children().children().html(data[1]);
+				parent.html(data[0]);
 				});
 			}
 			else
 			{
 			$.get('/voteddown', {id: id},
 				function(data,status){
-				parent.html(data);
+				data=data.split("<<<<<<<<");
+				parent.parent().parent().children().children().html(data[0]);
+				parent.html(data[1]);
 				});
 			}
 		return false;
