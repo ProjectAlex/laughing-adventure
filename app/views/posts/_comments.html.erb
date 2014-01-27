@@ -1,20 +1,20 @@
 <% post.comments.each do |comment| %>
 <% @user=comment.user%>
 <div class="row">
-<div class="span6 comment">
-<div class="row">
-<div class="span1 commentimg">	<%= image_tag @user.avatar.url(:medium),:size=>"40x40" %>	</div>
-<div class="span5">
-<div class="pull-right delete">
-          		<% if @user==current_user || current_user.id==post.posted_by_uid%>
-          		<%= link_to 'x', [comment.post, comment], method: :delete, class: "btn btn-danger btn-mini", title: "Detele Comment", data: { confirm: 'Are you sure?' } %>
-                    <% end %>
-                    </div>
-<%= comment.body %><br/>
-<small>-<%= comment.commenter %></small><br/>
-</div>
-</div>
-</div>
-</div>		
-<% end %>
+  <div class="col-xs-12 comment">
+    <div class="row">
+      <div class="col-xs-2 commentimg">	<%= image_tag @user.avatar.url(:medium),:size=>"40x40" %>	</div>
+      <div class="col-xs-10">
+      <div class="pull-right delete">
+			      <% if @user==current_user || current_user.id==post.posted_by_uid%>
+			      <%= link_to 'x', [comment.post, comment], method: :delete, class: "btn btn-danger btn-xs", title: "Detele Comment", data: { confirm: 'Are you sure?' } %>
+			  <% end %>
+	</div>
+	<%= comment.body %><br/>
+	<small>-<%= comment.commenter %></small><br/>
+      </div>
+    </div>
+  </div>
+</div>	
+<% end %><br>
 

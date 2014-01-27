@@ -6,15 +6,18 @@
   <% @post = Post.new %>
 
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-xs-12">
       <%=render :partial => 'posts/new.html.erb'%>
     </div>
-    <div class="col-xs-9">
+    </div>
+      <div class="row">
+    <div class="col-xs-12">
       <div id="postsfeed">
       <%= render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams } %>
       </div>
     </div>
    </div>
+   
 
 </br>
 <% end %>
