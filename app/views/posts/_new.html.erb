@@ -1,22 +1,21 @@
 <%= form_for(@post) do |f| %>
-<div class="fields">
-    <h5>All fields are required</h5>
-    <%= f.label :type %>
-<div class="radio">
+<div class="container fields">
+    <%= f.label :type %><br>
+<div class="col-sm-6 col-xs-12 form-group">
     <%= f.radio_button(:nature, "normal") %>
-<%= f.label :nature,"Normal" , :value => "nomral" %><br>
+<%= f.label :nature,"Normal" , :value => "normal" %>
     <%= f.radio_button(:nature, "image") %>
-<%= f.label :nature,"Image" , :value => "image" %><br>
+<%= f.label :nature,"Image" , :value => "image" %>
     <%= f.radio_button(:nature, "document") %>
 <%= f.label :nature,"Document" , :value => "document" %>
-</div>
- 		<%= f.label :content %>
-        <%= f.text_area :content ,:required => true %>
-		<%= f.label :caption %>
-        <%= f.text_area :caption %><br/>
-        <%= f.label :att_file, "File to Upload" %>
+</div><div class="col-sm-6 hidden-xs form-group">
+ <%= f.label :att_file, "File to Upload" %>
         <%= f.file_field :att_file %>
-    <%= f.submit("Post it" , :class => "btn-primary") %>
+</div><br><div class=" row form-group">
+ 		<div class="col-xs-12">
+        <%= f.text_area :content ,:required => true ,:class=>"form-control",:placeholder=>"Content"%>
+       </div></div>
+    <%= f.submit("Post it" , :class => "btn btn-primary") %>
   </div>
 
     

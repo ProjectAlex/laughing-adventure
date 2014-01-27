@@ -17,15 +17,7 @@ padding:5px;
 {
   opacity:1;
 }
-.postimg
-{
-float:left;
-height:50px;
-width:50px;
-border:solid 1px #d4dae8  ;
-padding:5px;
-overflow:hidden;
-}
+
 .commentimg
 {
 float:left;
@@ -112,7 +104,9 @@ margin-top:0px;
 border:2px solid #AAAAAA;
 border-radius:10px;
 float:left;
-display:inline;
+width:90%;
+margin-left:5%;
+margin-bottom:5%;
 padding:10px;
 transition : all 0.7s;
 }
@@ -138,13 +132,8 @@ opacity:1;
 }
 
 .radio{
-display:inline-block;
 overflow: hidden;
 white-space: nowrap;
-}
-
-.newcomment{
-float:right;
 }
 
 body{
@@ -156,11 +145,7 @@ background-position:center;
 filter:blur(4px);
 }
 
-.postavatar{
-height:100%;
-width:100%;
-overflow:hidden;
-}
+
 
 .delete{
   opacity:0;
