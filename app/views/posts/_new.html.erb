@@ -1,6 +1,6 @@
 <%= form_for(@post) do |f| %>
 <div class="container fields">
-    
+<div class="row">    
 <div class="col-sm-6 col-xs-12 form-group">
 <%= f.label :type %><br>
     <%= f.radio_button(:nature, "normal") %>
@@ -12,11 +12,17 @@
 </div><div class="col-sm-6 hidden-xs form-group">
  <%= f.label :att_file, "File to Upload" %>
         <%= f.file_field :att_file %>
-</div><br><div class=" row form-group">
- 		<div class="col-xs-12">
+</div>
+</div>
+<div class="row form-group">
+ 		<div class="col-xs-7">
  		<%= f.label :content %>
         <%= f.text_area :content ,:required => true ,:class=>"form-control",:placeholder=>"Content"%>
-       </div></div>
+       </div>
+       <div class="col-xs-5"> <%= f.label :caption %>
+        <%= f.text_area :caption ,:class=>"form-control",:placeholder=>"caption"%>
+       </div>
+   </div>
     <%= f.submit("Post it" , :class => "btn btn-primary") %>
   </div>
 

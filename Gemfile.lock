@@ -148,7 +148,7 @@ GEM
     redis (3.0.7)
     ref (1.0.5)
     refining (0.0.5.5)
-    rolify (3.2.0)
+    rolify (3.3.0)
     rsolr (1.0.9)
       builder (>= 2.1.2)
     rspec-core (2.14.7)
