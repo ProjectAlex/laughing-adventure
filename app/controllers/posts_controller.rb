@@ -44,7 +44,6 @@ class PostsController < ApplicationController
                 #Here the adding of tags starts
 		x=[]
                 y=[]
-                z=[]
                 begin
                     a=e.text_for(ocr_link[0]).strip
 		    y= @post.content.split(' ')
