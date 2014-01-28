@@ -3,14 +3,30 @@
 <% if @message.errors.present? %>
 	<label><%= @message.errors.full_messages %></label>
 <% end %>
-<%= simple_form_for(@message) do |f| %>
-	<fieldset>
-	<%= f.select(:recepient_id, User.confirmed.where.not(:id => current_user.id).pluck(:name,:id)) %>
-	<%= #f.input :recepient_id, label: 'Sent To' 
+<%= form_for(@message) do |f| %>
+	
+	<br>
+	<%= #f.text_area :recepient_id, label: 'Sent To' 
 	%>
-	<%= f.input :subject,:label=> false,:placeholder=>'enter title ...' %>
-	<%= f.input :body, :label=> false, :required=> false, :placeholder=> 'Hi, how are you? ...',:input_html => {:rows=>5,:style=>'width:100%'} %>
-	<%= f.input :container, :as=>:boolean, :label=>'Save as Draft?' %>
-	<%= f.button :submit,'Send Message',:class=>"btn btn-primary" %>
-	</fieldset>
+	<div class="row">
+	<div class="col-xs-4">
+	<div class="form-group">
+	<%= f.select :recepient_id, User.confirmed.where.not(:id => current_user.id).pluck(:name,:id),{},:class=>"form-control" %>
+	</div>
+	<div class="form-group">
+	<%= f.text_field :subject,:label=> false,:class=>"form-control",:placeholder=>'enter title ...' %>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-xs-10">
+	<div class="form-group">
+	<%= f.text_area :body, :label=> false, :required=> false,:class=>"form-control", :placeholder=> 'Hi, how are you? ...' %>
+	</div>
+	<div class="form-group">
+	<%= f.check_box :container, :as=>:boolean %>&nbsp;<%= f.label :container,"Save as Draft?" %>
+	</div>
+	<%= f.submit :submit,:class=>"btn btn-primary" %>
+	</div>
+	</div>
 <% end %>
