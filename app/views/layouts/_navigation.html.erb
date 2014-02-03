@@ -3,7 +3,6 @@ var rf;
 clearInterval(rf);
 </script>
 <%= link_to "Alex", root_path, :class => 'navbar-brand' %>
-
     <% if user_signed_in? %>
       <ul class="nav navbar-nav">
         <% if current_user.has_role? :admin %>

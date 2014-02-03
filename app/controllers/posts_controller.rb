@@ -49,8 +49,16 @@ class PostsController < ApplicationController
                 y=[]
                 begin
                     a=e.text_for(ocr_link[0]).strip
-                    x = word_frequencies(a+" "+@post.caption,5)
-                    y= @poset.content.split(' ')
+		    y= @post.content.split(' ')
+                    z=a.split(' ')
+		    z.each do |w|
+		      puts w.length
+		      if w.length <= 4		#Decides min word length !!!!!
+			z.delete_at(z.index(w))
+		      end
+		    end
+		    z=z.join(" ")        
+		    x = word_frequencies(z+" "+@post.content,5)
                     #z= @post.caption.split(' ')
                 rescue
                     puts "------------------------"

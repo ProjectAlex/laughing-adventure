@@ -43,7 +43,9 @@ class HomeController < ApplicationController
 
 protected
   def update_poststreams
-  	@posts_streams = Post.order('created_at DESC').load
+  	require 'will_paginate/array' 
+        @posts_streams = Post.find(:all, :order => 'posts.created_at DESC').paginate(:page => params[:page], :per_page => 5)
+      #@posts_streams = Post.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
   end 
  
 end
