@@ -1,4 +1,4 @@
-require 'tesseract'
+
 class PostsController < ApplicationController
     # GET /posts
     def index
@@ -26,12 +26,13 @@ class PostsController < ApplicationController
 
     # POST /posts
     def create
-        @post = Post.new(params[:post].permit(:nature,:content,:caption,:user,:att_file,:tags_list))
+        @post = Post.new(params[:post].permit(:nature,:content,:caption,:user,:att_file))
         @post.posted_by_uid=current_user.id
         @post.posted_by=current_user.name
         #@post.user = current_user
         @post.ups=0
         @post.downs=0
+	require 'tesseract'
 	@blacklist=Blacklist.all.pluck('word')
         e = Tesseract::Engine.new {|e|
             e.language  = :eng
@@ -48,16 +49,8 @@ class PostsController < ApplicationController
                 y=[]
                 begin
                     a=e.text_for(ocr_link[0]).strip
-		    y= @post.content.split(' ')
-                    z=a.split(' ')
-		    z.each do |w|
-		      puts w.length
-		      if w.length <= 4		#Decides min word length !!!!!
-			puts z.delete_at(z.index(w))
-		      end
-		    end
-		    z=z.join(" ")        
-		    x = word_frequencies(z+" "+@post.content,5)
+                    x = word_frequencies(a+" "+@post.caption,5)
+                    y= @poset.content.split(' ')
                     #z= @post.caption.split(' ')
                 rescue
                     puts "------------------------"
