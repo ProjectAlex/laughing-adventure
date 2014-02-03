@@ -25,7 +25,9 @@
 
                         <blockquote>
 
-                            <h2><%= post.nature %></h2>
+                            <h2>
+                                <%#<%= post.nature %>
+                        </h2>
                             <% if post.nature == "image" %>
                                     <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200'}".html_safe , post.att_file.url%>
                                     <% end %>
@@ -73,6 +75,9 @@
 
             </div>
         </div>
+        
+          <%#<%= will_paginate posts_streams %>
+           
 
     </div>
 <% end %>
