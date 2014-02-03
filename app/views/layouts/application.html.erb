@@ -14,12 +14,12 @@
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <nav class="navbar-inner">
-        <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">   <div class="container">
+      <div class="navbar-inner">
+     
           <%= render 'layouts/navigation' %>
         </div>
-      </nav>
+      
     </nav>
     <div id="main" role="main">
       <div class="container">
