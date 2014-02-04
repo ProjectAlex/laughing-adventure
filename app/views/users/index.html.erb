@@ -1,7 +1,7 @@
 <%= provide(:title,"Admin Panel") %>
 <% if current_user.id==1 %>
 <h3>Users</h3>
-<div class="span8">
+<div class="col-xs-12">
 <table class="table table-condensed">
   <thead>
     <tr>
@@ -21,10 +21,10 @@
       <td><%= user.created_at.to_date %></td>
       <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
       <td>
-      <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-warning btn-mini" type="button">Change role</a>
+      <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-info btn-sm" type="button">Change role</a>
         <%= render user %>
      </td>
-<td><%= button_to "Delete User",user_path(user), method: :delete, class: ' btn-danger btn-mini' unless user == current_user %>
+<td><%= button_to "Delete User",user_path(user), method: :delete, class: 'btn btn-danger btn-sm' unless user == current_user %>
          </td>
     </tr>
   <% end %>
