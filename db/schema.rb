@@ -132,20 +132,6 @@ ActiveRecord::Schema.define(version: 20140126133011) do
     t.string "name"
   end
 
-  create_table "topics", force: true do |t|
-    t.string   "title"
-    t.text     "desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "gravatar_file_name"
-    t.string   "gravatar_content_type"
-    t.integer  "gravatar_file_size"
-    t.datetime "gravatar_updated_at"
-    t.string   "slug"
-  end
-
-  add_index "topics", ["slug"], name: "index_topics_on_slug", unique: true
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

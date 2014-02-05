@@ -11,7 +11,7 @@
   <%= f.input :password, :required => true, :input_html => { :class => "form-control" },:error_html => { :class => 'has-error'} %>
   <%= f.input :password_confirmation, :required => true, :input_html => { :class => "form-control" },:error_html => { :class => 'has-error'} %>
   <div class="form-inline form-group">
-  <%= f.input :date_of_birth,:required => true, :input_html => { :class => "form-control" },:error_html => { :class => 'has-error'}%>
+  <%= f.input :date_of_birth,:required => true,start_year: Date.today.year - 90 ,end_year: Date.today.year - 12,:input_html => { :class => "form-control" },:error_html => { :class => 'has-error'}%>
   </div>
   <%= f.button :submit, 'Sign up', :class => 'btn btn-success' %>
   </div>

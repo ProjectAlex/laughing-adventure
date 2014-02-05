@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 	@blacklist=Blacklist.all.pluck('word')
         e = Tesseract::Engine.new {|e|
             e.language  = :eng
-            e.blacklist = @blacklist
+            e.blacklist = '1234567890!@#$%^&*(){}:"|<>?~`;\',./'
         }
 
         @post.save

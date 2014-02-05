@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-xs-12 comment">
     <div class="row">
-      <div class="col-xs-2 commentimg">	<%= image_tag @user.avatar.url(:medium),:size=>"40x40" %>	</div>
+      <div class="col-xs-2 commentimg">	<%= image_tag @user.avatar.url(:medium),:size=>"50x50",class: 'img-thumbnail' %>	</div>
       <div class="col-xs-10">
       <div class="pull-right delete">
 			      <% if @user==current_user || current_user.id==post.posted_by_uid%>

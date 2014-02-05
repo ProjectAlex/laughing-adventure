@@ -9,9 +9,11 @@
 <%= f.label :nature,"Image" , :value => "image" %>
     <%= f.radio_button(:nature, "document") %>
 <%= f.label :nature,"Document" , :value => "document" %>
-</div><div class="col-sm-6 hidden-xs form-group">
+</div><div class="col-sm-6 form-group">
  <%= f.label :att_file, "File to Upload" %>
-        <%= f.file_field :att_file %>
+        <%= f.file_field :att_file, :data => {
+ :max_file_size => 10.megabytes
+ } %>
 </div>
 </div>
 <div class="row form-group">

@@ -10,14 +10,21 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.friendly.find(params[:id])
-    @user_posts = Post.where(posted_by_uid: @user.id).order('created_at DESC').load
+  #  @user_posts = Post.where(posted_by_uid: @user.id).order('created_at DESC').load
+    @user_posts = Post.where(posted_by_uid: @user.id).paginate(:page => params[:page], :per_page => 5)
+
   end
   
   def update
     @user = User.friendly.find(params[:id])
-		@Role = User.friendly.find_by_role(:role_ids);
+#puts @user.name
+puts '--------------------------------------' 
+
+   @Role = @user.role_ids.name
+puts @Role
+puts '--------------------------------------'
     if current_user.has_role? :admin
-			@user.add_role(@role) #will change to admin but nothing else. Form input variable name ? views/users/_users.html.erb?
+#			@user.add_role(@Role) #will change to admin but nothing else. Form input variable name ? views/users/_users.html.erb?
       redirect_to users_path, :notice => "User updated."
     else
       redirect_to users_path, :alert => "Unable to update user."
