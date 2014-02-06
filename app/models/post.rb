@@ -11,4 +11,9 @@ class Post < ActiveRecord::Base
  :class_name => 'User',
  :join_table => :dislikers
    acts_as_taggable
+   searchable do
+       text :content, :boost => 5
+       text :caption
+       text :tag_list
+   end
 end

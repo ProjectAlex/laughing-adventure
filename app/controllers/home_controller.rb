@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
   before_filter :update_poststreams
 
+  def search
+      @search=Post.search do
+          fulltext params[:search]
+      end
+      @articles = @search.results
+  end
+
   def home
   end
 

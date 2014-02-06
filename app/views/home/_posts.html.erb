@@ -24,14 +24,15 @@
 
                         <blockquote>
 
-                            <h2>
+                            <small>
                                 <%= post.nature %>
-                        </h2>
+                        </small>
                             <% if post.nature == "image" %>
                                     <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
+                                    <small><%= post.caption %></small>
                                     <% end %>
                             <p><%= post.content %></p>
-                            <small><%= post.posted_by %></small><br>
+                            <small><%= link_to post.posted_by,User.find(post.posted_by_uid) %></small><br>
                               
 
 
