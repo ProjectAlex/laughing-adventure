@@ -1,5 +1,5 @@
-<%= form_for([post, post.comments.build]) do |f| %>
-    <%= f.text_area :body , {:onfocus => "disable()" , :onblur => "enable()" , :required => true} %>
+<%= simple_form_for([post, post.comments.build], :defaults => { :input_html => { :class => "form-control" } } )  do |f| %>
+    <%= f.input :body ,{:onfocus => "disable()" , :onblur => "enable()" , :required => true, label: false} %>
 
     <%= f.submit :Comment , {:class => "btn btn-success" , :name => "comment-btn"} %>
 <% end %>

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/zlx/simple_form_bootstrap3.git
+  revision: 8fe2e4ef642296061a8a42e432685c896203af22
+  specs:
+    simple_form (3.0.0.rc)
+      actionpack (>= 4.0.0, < 4.1)
+      activemodel (>= 4.0.0, < 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -173,9 +181,6 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    simple_form (3.0.1)
-      actionpack (>= 4.0.0, < 4.1)
-      activemodel (>= 4.0.0, < 4.1)
     socialization (1.1.0)
       activerecord
     soulmate_rails (0.3.1)
@@ -261,7 +266,7 @@ DEPENDENCIES
   rolify
   rspec-rails
   sass-rails (~> 4.0.0)
-  simple_form (>= 3.0.0.rc)
+  simple_form!
   socialization
   soulmate_rails
   sqlite3

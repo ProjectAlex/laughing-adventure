@@ -8,6 +8,8 @@ class HomeController < ApplicationController
   @post = Post.find(params[:id])
   @likercheck=@post.likers.where(:id == current_user.id).first
   if(@likercheck.nil?)
+    puts @likercheck.name
+    debugger
     @post.ups=@post.ups+1
     @post.likers << current_user
   end
