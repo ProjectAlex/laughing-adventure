@@ -1,7 +1,7 @@
 LaughingAdventure::Application.routes.draw do
     devise_for :views
     root :to => "home#index"
-    match '/home/search', :to => "home#search" , :via => "get"
+    match '/search', :to => "home#search" , :via => "get"
     devise_for :users, :controllers => {:registrations => "registrations"}
     resources :users 
     resources :posts do 
