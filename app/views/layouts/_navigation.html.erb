@@ -20,9 +20,9 @@ clearInterval(rf);
     <li><%= link_to "Search", home_search_path %></li>
 </ul>
 
-<form class="navbar-form navbar-left" role="search" action="/home/search?utf8=%E2%9C%93&commit=Search" method="get">
+<form class="navbar-form navbar-left" role="search" action="/home/search" method="get" accept-charset="ISO-8859-1">
     <div class="form-group">
-        <input type="text" name="search" id="" value="" placeholder="Dummy"/>
+        <input type="text" name="search" id="" value="" placeholder="Type Search Text Here"/>
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </form>
