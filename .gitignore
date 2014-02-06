@@ -78,3 +78,8 @@ pickle-email-*.html
 # Ignore application configuration
 /config/application.yml
 .zeus.sock
+
+#solr files
+solr/pids/development/sunspot-solr-development.pid
+
+

@@ -54,5 +54,8 @@ class User < ActiveRecord::Base
  def unread_message_count
   eval 'received_messages.count(:conditions => ["read_at IS NULL"])'
  end
-
+ searchable do
+    text :name
+    text :email
+ end
 end

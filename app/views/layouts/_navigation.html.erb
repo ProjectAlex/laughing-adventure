@@ -17,11 +17,15 @@ clearInterval(rf);
     <% if current_user.has_role? :admin %>
         <li>	  <%= link_to 'Admin', users_path %>	</li>
 <% end %>
+<<<<<<< HEAD
     <li><a href="<%= index_messages_path %>"><i class="icon-folder-close"></i>Messages<span class="unreadmessages badge"><%= current_user.unread_message_count unless current_user.unread_message_count == 0%></span></a></li>
     <li><%= link_to "Search", home_search_path %></li>
+=======
+    <li><a href="<%= index_messages_path %>"><i class="icon-folder-close"></i>Messages</a></li>
+>>>>>>> c687ea3fd9ae65906d56d69de611d5ae6ac6ef15
 </ul>
 
-<form class="navbar-form navbar-left" role="search" action="/home/search" method="get" accept-charset="ISO-8859-1">
+<form class="navbar-form navbar-left" role="search" action="/search" method="get" accept-charset="ISO-8859-1">
     <div class="form-group">
         <input type="text" name="search" id="" value="" placeholder="Type Search Text Here"/>
         <button type="submit" class="btn btn-primary">Search</button>

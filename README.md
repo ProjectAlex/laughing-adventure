@@ -40,12 +40,10 @@ Steps to be followed
 
         - http://17748bc1.ngrok.com/  
         - https://56374f6c.ngrok.com/
-	- https://alex.ngrok.com/
+	    - https://alex.ngrok.com/
 
 
-        - http://17748bc1.ngrok.com/  
-        - https://56374f6c.ngrok.com/
-	- https://alex.ngrok.com/
+
 License
 ----------
 
