@@ -11,18 +11,17 @@
 <%= f.label :nature,"Document" , :value => "document" %>
 </div><div class="col-sm-6 form-group">
  <%= f.label :att_file, "File to Upload" %>
-        <%= f.file_field :att_file, :data => {
+        <%= f.file_field :att_file , :data => {
  :max_file_size => 10.megabytes
  } %>
 </div>
 </div>
 <div class="row form-group">
  		<div class="col-xs-7">
- 		<%= f.label :content %>
-        <%= f.text_area :content ,:required => true ,:class=>"form-control",:placeholder=>"Content"%>
+        <%= f.input :content ,:required => true, :placeholder=>"Content" , label: false %>
        </div>
-       <div class="col-xs-5"> <%= f.label :caption %>
-        <%= f.text_area :caption ,:class=>"form-control",:placeholder=>"caption"%>
+       <div class="col-xs-5">
+        <%= f.input :caption, :placeholder=>"Caption" , label: false %>
        </div>
    </div>
     <%= f.submit("Post it" , :class => "btn btn-primary") %>

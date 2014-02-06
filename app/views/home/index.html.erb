@@ -27,7 +27,8 @@ var rf;
 
 var refreshtime = 15000;
 clearInterval(rf);
-var timelyrefreshPostFeeds; 
+var timelyrefreshPostFeeds;
+var timelyrefreshMessageBadge; 
 document.getElementsByName("comment-btn").className = "btn-primary disabled";
 function disable(){
 	clearInterval(rf);
@@ -40,7 +41,14 @@ $(document).ready(function(){
 			$('#postsfeed').html(data)
 			return false
 			});
-		refreshtime=refreshtime+10000;
+			};
+		timelyrefreshMessageBadge = function(){url = '/message'
+		$.get(url,function(data,status){
+			$('#unreadmessages').html(data)
+			//alert(data);
+			return false
+			});
+			refreshtime=refreshtime*1.3;
 		};
 		
 		<% if current_user %>

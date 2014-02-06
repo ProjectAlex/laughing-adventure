@@ -46,13 +46,13 @@ class User < ActiveRecord::Base
   Message.where(:sender_id => self.id).order('sent_at DESC').load
  end
     
-def unread_messages?
- unread_message_count > 0 ? true : false
+ def unread_messages?
+  unread_message_count > 0 ? true : false
  end
  
 # Returns the number of unread messages for this user
  def unread_message_count
- eval 'messages.count(:conditions => ["recepient_id = ? AND read_at IS NULL", self.beamer_id])'
+  eval 'received_messages.count(:conditions => ["read_at IS NULL"])'
  end
 
 end

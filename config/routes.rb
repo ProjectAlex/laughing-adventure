@@ -23,10 +23,11 @@ LaughingAdventure::Application.routes.draw do
     get  "refresh"  => "home#refreshposts", :as => "refresh"
     get "votedup"  => "home#votedup", :as => "votedup"
     get  "voteddown"  => "home#voteddown", :as => "voteddown"
-    
+    get  "message"  => "messages#unreadcount", :as => "unreadmessages"
+
     post 'users/user_follow'
-  post 'users/user_unfollow'
-  post 'topics/user_follow'
-  post 'topics/user_unfollow'
+    post 'users/user_unfollow'
+    post 'topics/user_follow'
+    post 'topics/user_unfollow'
 
 end

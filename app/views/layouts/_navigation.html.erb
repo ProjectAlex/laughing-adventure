@@ -16,7 +16,7 @@ clearInterval(rf);
         <% if current_user.has_role? :admin %>
 	  <li>	  <%= link_to 'Admin', users_path %>	</li>
 	<% end %>
-	  <li><a href="<%= index_messages_path %>"><i class="icon-folder-close"></i>Messages</a></li>
+	  <li><a href="<%= index_messages_path %>"><i class="icon-folder-close"></i>Messages <span class="unreadmessages badge"><%= current_user.unread_message_count unless current_user.unread_message_count == 0%></span></a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">

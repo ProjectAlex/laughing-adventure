@@ -15,6 +15,11 @@ class MessagesController < ApplicationController
  #end
  end
  
+ def unreadcount
+  @count = current_user.unread_message_count
+  render :text => '<span class="unreadmessages badge">'+@count.to_s+'</span>'
+ end
+ 
  def sent   
  @sent_messages = @user.sent_messages
  end

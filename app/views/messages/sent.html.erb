@@ -12,7 +12,13 @@
 		<tbody>
 		<% @sent_messages.each do |message| %>
 			<tr>
-				<td><%=h message.subject %></td>
+				<td>
+					<% if !message.read_at %>
+						<b><%=h message.subject %></b>
+					<% else %>
+						<%=h message.subject %>
+					<% end %>
+				</td>
 				<td><%=h message.recepient.name %> at <%=h message.sent_at.to_date %></td>
 				<td>
 					<%= link_to("Show",message_path(:id=>message)) %>
