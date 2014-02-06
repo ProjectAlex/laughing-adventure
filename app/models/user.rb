@@ -54,5 +54,8 @@ def unread_messages?
  def unread_message_count
  eval 'messages.count(:conditions => ["recepient_id = ? AND read_at IS NULL", self.beamer_id])'
  end
-
+ searchable do
+    text :name
+    text :email
+ end
 end

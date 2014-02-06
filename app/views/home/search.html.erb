@@ -1,78 +1,95 @@
 <%= form_tag home_search_path, :method => :get do %>
-      <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
-  </p>
+    <p>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+</p>
 <% end %>
-<% @articles.each do |post| %>
-<div class="row">
-    <%@user = User.where(id: post.posted_by_uid).first %>
-    <div class="col-xs-10">
-        <div class="row">
-            <div class="posttext">
-                <div class="pull-right delete">
-                    <% if post.posted_by_uid==current_user.id %>
-                        <%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-sm", title: "Delete Post" ,confirm: 'Are you sure?' %>
-                <% end %>
-                </div>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab">Posts</a></li>
+    <li><a href="#profile" data-toggle="tab">Users</a></li>
+</ul>
 
-                <blockquote>
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane active" id="home">
 
-                    <small>
-                        <%= post.nature %>
-                    </small>
-                    <% if post.nature == "image" %>
-                        <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
-                <% end %>
-                    <p><%= post.content %></p>
-                    <small><%= post.posted_by %></small><br>
+        <% @articles.each do |post| %>
+            <div class="row">
+            <%@user = User.where(id: post.posted_by_uid).first %>
+            <div class="col-xs-10">
+                <div class="row">
+                    <div class="posttext">
 
+                        <blockquote>
 
-
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <p> Tags: <%= raw post.tag_list.map { |t| link_to t, t }.join(', ') %>
-                        <% if post.nature == "document"%>
-                                <small><%= link_to "Download file",post.att_file.url %></small><br>
+                            <small>
+                                <%= post.nature %>
+                            </small>
+                            <% if post.nature == "image" %>
+                                <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
                         <% end %>
-                            <div class="posttime">created at  <%= post.created_at %></div>
+                            <p><%= post.content %></p>
+                            <small><%= post.posted_by %></small><br>
+
+
+
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <p> Tags: <%= raw post.tag_list.map { |t| link_to t, t }.join(', ') %>
+                                <% if post.nature == "document"%>
+                                        <small><%= link_to "Download file",post.att_file.url %></small><br>
+                                <% end %>
+                                    <div class="posttime">created at  <%= post.created_at %></div>
+                                </div>
+
+                                <div class="votebox col-xs-4">
+                                    <div class="col-xs-6">
+                                        <a href="" id="<%= post.id %>" name="up" class="votes">
+                                            <div class='up'></div><%= post.ups %> likes</a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a href=""  id="<%= post.id %>"  name="down" class="votes">
+                                            <div class='down'></div><%= post.downs %> dislikes</a>
+                                    </div>
+
+                                </div>
+                            </div>   
+
+
+                        </blockquote>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-3 comments">
+                            <%=render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
                         </div>
-
-                        <div class="votebox col-xs-4">
-                            <div class="col-xs-6">
-                                <a href="" id="<%= post.id %>" name="up" class="votes">
-                                    <div class='up'></div><%= post.ups %> likes</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href=""  id="<%= post.id %>"  name="down" class="votes">
-                                    <div class='down'></div><%= post.downs %> dislikes</a>
-                            </div>
-
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10  col-xs-offset-1 newcomment">
+                            <%=render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>	<br>	
                         </div>
-                    </div>   
-
-
-                </blockquote>
-
-
-            </div>
-            <div class="row">
-                <div class="col-xs-10 col-xs-offset-3 comments">
-                    <%=render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-10  col-xs-offset-1 newcomment">
-                    <%=render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>	<br>	
-                </div>
+
             </div>
         </div>
 
+
+
+
+    <% end %>
+        <% if @articles.empty? %>
+            <h5>Cannot find any posts, sorry</h5>
+        <p>Were you looking for users? </p>
+    <% end %>
+
+
+
+
+
+
     </div>
+    <div class="tab-pane" id="profile">...</div>
 </div>
-
-
-
-
 </div>
-<% end %>
