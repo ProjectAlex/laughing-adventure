@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
  #if params[:mailbox] == "sent"
  #@messages = @user.sent_messages
  #elsif params[:mailbox] == "inbox"
- @messages = @user.received_messages
+ @messages = @user.received_messages.group("sender_id")
  #@messages = Message.all
  #@messages = Message.where(:recepient_id => @user.id).all
  #elsif params[:mailbox] == "archieved"
@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
  end
  
  def new
- debugger
+ 
  @message = Message.new
  if params[:reply_to]
  @reply_to = User.find_by_user_id(params[:reply_to])
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
  @message.recepient_id = @reply_to.user_id
  end
  end
- debugger
+ 
  end
  
  def create
@@ -66,6 +66,9 @@ class MessagesController < ApplicationController
  
 def show
  @message = Message.readingmessage(params[:id],@user.id)
+ @fromcurrent = @user.sent_messages.where(:recepient_id => @message.sender_id)
+ @messages = @user.received_messages.where(:sender_id => @message.sender_id)
+ @messages =  (@messages + @fromcurrent).sort{|a,b| a[:sent_at] <=> b[:sent_at] }.reverse
  end
  
  def trash
