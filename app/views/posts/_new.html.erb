@@ -1,31 +1,28 @@
-<%= simple_form_for(@post) do |f| %>
-<div class="container fields">
-<div class="row">    
-<div class="col-sm-6 col-xs-12 form-group">
-<%= f.label :type %><br>
+<%= form_for(@post)  do |f| %>
+<div class="container fields">    
+<%= f.label :type %>
+<div class="form-group radio">
     <%= f.radio_button(:nature, "normal") %>
-<%= f.label :nature,"Normal" , :value => "normal" %>
+<%= f.label :nature,"Normal" , :value => "normal" %><br>
     <%= f.radio_button(:nature, "image") %>
-<%= f.label :nature,"Image" , :value => "image" %>
+<%= f.label :nature,"Image" , :value => "image" %><br>
     <%= f.radio_button(:nature, "document") %>
-<%= f.label :nature,"Document" , :value => "document" %>
+<%= f.label :nature,"Document" , :value => "document" %><br>
     <%= f.radio_button(:nature, "YouTube Video link/SoundCloud Link") %>
 <%= f.label :nature,"YouTube Video Link/SoundCloud Link" , :value => "link" %>
-</div><div class="col-sm-6 form-group">
+</div>
+<div class="form-group">
  <%= f.label :att_file, "File to Upload" %>
         <%= f.file_field :att_file , :data => {
  :max_file_size => 10.megabytes
  } %>
 </div>
-</div>
-<div class="row form-group">
- 		<div class="col-xs-7">
-        <%= f.input :content ,:required => true, :placeholder=>"Content/Link" , label: false %>
-       </div>
-       <div class="col-xs-5">
-        <%= f.input :caption, :placeholder=>"Caption" , label: false %>
-       </div>
-   </div>
+<div class="form-group">
+ 		
+        <%= f.text_area :content ,:required => true, :class => 'form-control',:placeholder=>"Content/Link" , label: false %>
+   <br> 
+        <%= f.text_area :caption, :placeholder=>"Caption" , :class => 'form-control',label: false %>
+      </div>
     <%= f.submit("Post it" , :class => "btn btn-primary") %>
   </div>
 
