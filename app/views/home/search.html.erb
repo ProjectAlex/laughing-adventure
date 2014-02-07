@@ -96,8 +96,8 @@
     </div>
     <div class="tab-pane" id="profile">
         <% @users.each do |user|  %>
-            <%= link_to user.name,user %>
-        <%= user.email %>
+            <h4><%= link_to user.name,user %>
+        <%= user.email %></h4>
     <% end %>
     <% if @users.empty? %>
         <h5>No users with such a name or email</h5>
