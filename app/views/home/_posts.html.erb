@@ -18,7 +18,7 @@
                 <div class="row">
 		    <div class="posttext">
                         <div class="pull-right delete">
-                            <% if post.posted_by_uid==current_user.id || current_user.has_role(:admin)%>
+                            <% if post.posted_by_uid==current_user.id || (current_user.has_role? :admin) %>
                                 <%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-sm", title: "Delete Post" ,confirm: 'Are you sure?' %>
                         <% end %>
                         </div>
@@ -33,7 +33,9 @@
                             <p><%= post.content %></p>
                         <% else %>
                             <p><%= post.content %></p>
+				<div class="embedded">
                                 <%= embed(post.content) %>
+				</div>
                                     <% end %>
                                     <small><%= post.caption %></small>
                             <br /><small><%= link_to post.posted_by,User.find(post.posted_by_uid) %></small><br>

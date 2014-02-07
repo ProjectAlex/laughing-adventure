@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
  end
  
  def new
+ debugger
  @message = Message.new
  if params[:reply_to]
  @reply_to = User.find_by_user_id(params[:reply_to])
@@ -32,6 +33,7 @@ class MessagesController < ApplicationController
  @message.recepient_id = @reply_to.user_id
  end
  end
+ debugger
  end
  
  def create
