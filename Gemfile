@@ -22,11 +22,13 @@ gem 'soulmate_rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'acts-as-taggable-on'
+gem 'embed'
 gem 'debugger' #for debugging
 gem 'friendly_id', '~> 5.0.0beta1'
 group :assets do
     gem 'therubyracer', :platform=>:ruby
 end
+gem 'omniauth-facebook'
 group :development do
     gem 'sqlite3'
     gem 'mysql2'

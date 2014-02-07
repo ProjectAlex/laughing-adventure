@@ -6,7 +6,8 @@
 
 
     <div class="row">
-        <%@user = User.where(id: post.posted_by_uid).first %>
+        <%@user = User.where(id: post.posted_by_uid).first 
+	  if @user %>
         <% if params[:controller]=='home'%>
             <div class="col-xs-2 postimg">	<%= image_tag @user.avatar.url(:medium),:size => "100x100",class: 'postavatar img-thumbnail' %>	</div>
 
@@ -29,8 +30,10 @@
                         </small>
                             <% if post.nature == "image" %>
                                     <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
-                                    <% end %>
                             <p><%= post.content %></p>
+                        <% else %>
+                                <%= embed(post.content) %>
+                                    <% end %>
                                     <small><%= post.caption %></small>
                             <br /><small><%= link_to post.posted_by,User.find(post.posted_by_uid) %></small><br>
                               
@@ -82,6 +85,7 @@
            
 
     </div>
+<% end %>
 <% end %>
  <%= will_paginate posts_streams %>
 <% end %>
