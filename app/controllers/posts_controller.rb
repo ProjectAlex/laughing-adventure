@@ -33,8 +33,8 @@ class PostsController < ApplicationController
         #@post.user = current_user
         @post.ups=0
         @post.downs=0
-	require 'tesseract'
-	@blacklist=Blacklist.all.pluck('word')
+        require 'tesseract'
+        @blacklist=Blacklist.all.pluck('word')
         e = Tesseract::Engine.new {|e|
             e.language  = :eng
             e.blacklist = '1234567890!@#$%^&*(){}:"|<>?~`;\',./'
@@ -43,33 +43,40 @@ class PostsController < ApplicationController
         @post.save
         respond_to do |format|
             if @post.save
-		@path= Rails.root.to_s() + '/public' +@post.att_file.url
-                ocr_link=(@path).split('?')
-                #Here the adding of tags starts
-		x=[]
-                y=[]
-                begin
-                    a=e.text_for(ocr_link[0]).strip
-		    y= @post.content.split(' ')
-                    z=a.split(' ')
-		    z.each do |w|
-		      puts w.length
-		      if w.length <= 4		#Decides min word length !!!!!
-			z.delete_at(z.index(w))
-		      end
-		    end
-		    z=z.join(" ")        
-		    x = word_frequencies(z+" "+@post.content,5)
-                    #z= @post.caption.split(' ')
-                rescue
-                    puts "------------------------"
-                    puts "Couldn't find the frequency"
-                    puts "------------------------"
+                if @post.nature=="image"
+                    @path= Rails.root.to_s() + '/public' +@post.att_file.url
+                    ocr_link=(@path).split('?')
+                    #Here the adding of tags starts
+                    x=[]
+                    y=[]
+                    begin
+                        a=e.text_for(ocr_link[0]).strip
+                        y= @post.content.split(' ')
+                        z=a.split(' ')
+                        z.each do |w|
+                            puts w.length
+                            if w.length <= 4		#Decides min word length !!!!!
+                                z.delete_at(z.index(w))
+                            end
+                        end
+                        z=z.join(" ")        
+                        x = word_frequencies(z+" "+@post.content,5)
+                        #z= @post.caption.split(' ')
+                        @post.tag_list.add(x+y)
+                    rescue
+                        x=[]
+                        puts "------------------------"
+                        puts "Couldn't find the frequency"
+                        puts "------------------------"
+                        @post.tag_list.add(x+y)
+                    end
+                else
+                    x = (@post.content+@post.caption).split(' ')
                 end
                 puts "----------------------"
-                puts "tags"  
+                puts "tags",x  
                 puts "----------------------"
-                @post.tag_list.add(x+y)
+                @post.tag_list.add(x)
                 @post.save
                 #Ends here (hopefully)
                 format.html { redirect_to root_path }
