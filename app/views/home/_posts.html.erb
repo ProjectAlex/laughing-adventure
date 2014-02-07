@@ -32,6 +32,7 @@
                                     <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
                             <p><%= post.content %></p>
                         <% else %>
+                            <p><%= post.content %></p>
                                 <%= embed(post.content) %>
                                     <% end %>
                                     <small><%= post.caption %></small>
