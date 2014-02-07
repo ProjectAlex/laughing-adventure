@@ -1,3 +1,4 @@
+<% if current_user.has_role? :admin %>
 <p>
   <strong>Title:</strong>
   <%= @post.type %>
@@ -7,3 +8,4 @@
   <strong>Text:</strong>
   <%= @post.body %>
 </p>
+<% end %>
