@@ -36,7 +36,7 @@ GEM
     acts-as-taggable-on (3.0.1)
       rails (>= 3, < 5)
     addressable (2.3.5)
-    arel (4.0.1)
+    arel (4.0.2)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
@@ -211,7 +211,7 @@ GEM
       ffi-extra
       ffi-inline
       iso-639
-    therubyracer (0.12.0)
+    therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
     thin (1.6.1)

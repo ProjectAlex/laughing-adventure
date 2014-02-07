@@ -18,13 +18,19 @@ class UsersController < ApplicationController
   def update
     @user = User.friendly.find(params[:id])
 #puts @user.name
-puts '--------------------------------------' 
+puts '--------------------------------------'   
 
-   @Role = @user.role_ids.name
-puts @Role
 puts '--------------------------------------'
+
     if current_user.has_role? :admin
-#			@user.add_role(@Role) #will change to admin but nothing else. Form input variable name ? views/users/_users.html.erb?
+	if @user.has_role? :admin
+		@user.remove_role :admin
+		@user.add_role(:user)
+	else
+		@user.remove_role :user
+		@user.add_role(:admin)
+	end
+	
       redirect_to users_path, :notice => "User updated."
     else
       redirect_to users_path, :alert => "Unable to update user."

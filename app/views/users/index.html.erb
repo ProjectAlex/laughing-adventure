@@ -25,7 +25,9 @@
       <td><%= user.sign_in_count %></td>	
       <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
       <td>
-      <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-info btn-sm" type="button">Change role</a>
+	<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#role-options-<%= user.id %>">
+  		Change Role
+	</button>
         <%= render user %>
      </td>
 <td><%= button_to "Delete User",user_path(user), method: :delete, class: 'btn btn-danger btn-sm' unless user == current_user %>
