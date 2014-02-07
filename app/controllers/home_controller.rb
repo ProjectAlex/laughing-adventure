@@ -6,6 +6,10 @@ class HomeController < ApplicationController
           fulltext params[:search]
       end
       @articles = @search.results
+      @search1=User.search do
+          fulltext params[:search]
+      end
+      @users = @search1.results
   end
 
   def home
