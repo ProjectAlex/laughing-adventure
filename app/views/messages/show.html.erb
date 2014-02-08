@@ -6,11 +6,13 @@
 <div class="message_body">
 <% @messages.each do |m| %>
 <div class="row">
-<div class="col-xs-9">
+<div class="col-xs-9 messagebox">
 	<% if m.sender_id.to_i == current_user.id %>
-	<b class="pull-right"><%= m.body %></b>
+	<div class="triangle-right pull-left" style="min-width:100px"><%= m.body %></div>
 	<% else %>
+	<div class="triangle-right top pull-right" style="min-width:100px">
 	   <%= m.body %>
+	</div>
 	<% end %>
 </div>
 <div class="col-xs-3">

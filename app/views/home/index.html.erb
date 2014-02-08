@@ -42,15 +42,18 @@ $(document).ready(function(){
 		$.get(url,function(data,status){
 			$('#postsfeed').html(data)
 			return false
+			clearInterval(rf);
+			alert(refreshtime);
+			rf = setInterval(timelyrefreshPostFeeds,refreshtime);
+			refreshtime = refreshtime*1.5;		
 			});
-			};
+		};
 		timelyrefreshMessageBadge = function(){url = '/message'
 		$.get(url,function(data,status){
 			$('#unreadmessages').html(data)
 			//alert(data);
 			return false
 			});
-			refreshtime=refreshtime*1.3;
 		};
 		
 		<% if current_user %>
