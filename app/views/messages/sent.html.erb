@@ -19,7 +19,9 @@
 						<%=h message.subject %>
 					<% end %>
 				</td>
-				<td><%=h message.recepient.name %> at <%=h message.sent_at.to_date %></td>
+				<td><% if message.recepient %> 
+						<%= message.recepient.name %>
+					<% else %><b>Deleted User </b><% end %> at <%=h message.sent_at.to_date %></td>
 				<td>
 					<%= link_to("Show",message_path(:id=>message)) %>
 				</td>

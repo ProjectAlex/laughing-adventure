@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
  end
  
  def sent   
- @sent_messages = @user.sent_messages
+ @sent_messages = @user.sent_messages.group("recepient_id")
  end
  
  def new
@@ -69,6 +69,7 @@ def show
  @fromcurrent = @user.sent_messages.where(:recepient_id => @message.sender_id)
  @messages = @user.received_messages.where(:sender_id => @message.sender_id)
  @messages =  (@messages + @fromcurrent).sort{|a,b| a[:sent_at] <=> b[:sent_at] }.reverse
+ @message = @messages.first
  end
  
  def trash
