@@ -70,7 +70,7 @@ class PostsController < ApplicationController
                         @post.tag_list.add(x+y)
                     end
                 else
-                    x = (@post.content+@post.caption).split(' ')
+                    x = (@post.content+' '+@post.caption).split(' ')
                 end
                 puts "----------------------"
                 puts "tags",x  
