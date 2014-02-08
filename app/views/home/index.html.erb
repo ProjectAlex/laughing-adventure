@@ -22,6 +22,8 @@
    
 
 </br>
+<% else %>
+Welcome to our site. You may post anything and upload files upto 10MB. Though the caption may not appear for posts it must be filled with some nonsense(this is a bug). You may send private messages to each other and comment on posts and even have your own profile pictures. The server will be slow since im using a home connection so please be patient . Do try uploading images that contain text to see if our AUTO TAGGING system works. Thank youWelcome to our site. You may post anything and upload files upto 10MB. Though the caption may not appear for posts it must be filled with some nonsense(this is a bug). You may send private messages to each other and comment on posts and even have your own profile pictures. The server will be slow since im using a home connection so please be patient . Do try uploading images that contain text to see if our AUTO TAGGING system works.
 <% end %>
 <script>
 
@@ -50,7 +52,7 @@ $(document).ready(function(){
 		};
 		timelyrefreshMessageBadge = function(){url = '/message'
 		$.get(url,function(data,status){
-			$('#unreadmessages').html(data)
+			$('.unreadmessages').html(data)
 			//alert(data);
 			return false
 			});

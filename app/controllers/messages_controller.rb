@@ -68,7 +68,11 @@ def show
  @message = Message.readingmessage(params[:id],@user.id)
  @fromcurrent = @user.sent_messages.where(:recepient_id => @message.sender_id)
  @messages = @user.received_messages.where(:sender_id => @message.sender_id)
- @messages =  (@messages + @fromcurrent).sort{|a,b| a[:sent_at] <=> b[:sent_at] }.reverse
+ @messages.each do |m|
+	m.read_at = Time.now
+ 	m.save
+ end
+ @messages =  (@messages + @fromcurrent).sort{|a,b| a[:sent_at] <=> b[:sent_at] }.reverse 
  @message = @messages.first
  end
  
