@@ -120,6 +120,8 @@ GEM
       multi_json (>= 1.5)
     launchy (2.4.2)
       addressable (~> 2.3)
+    libnotify (0.8.2)
+      ffi (>= 1.0.11)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -279,6 +281,7 @@ DEPENDENCIES
   friendly_id (~> 5.0.0beta1)
   jbuilder (~> 1.2)
   jquery-rails
+  libnotify
   mysql2
   omniauth-facebook
   paperclip

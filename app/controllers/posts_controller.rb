@@ -1,3 +1,4 @@
+require 'libnotify'
 class PostsController < ApplicationController
     # GET /posts
     def index
@@ -84,6 +85,7 @@ class PostsController < ApplicationController
                 format.html { redirect_to root_path }
                 format.json { render :json => @post.errors, :status => :unprocessable_entity }
             end
+            Libnotify.show :summary => @post.content , :body => "#{@post.content} \n#{@post.caption} \n #{@post.created_at}"
         end
     end
     def word_frequencies(string, n)
