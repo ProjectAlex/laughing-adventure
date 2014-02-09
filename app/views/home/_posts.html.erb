@@ -52,7 +52,7 @@
                                <% if post.nature == "document"%>
                                     <small><%= link_to "Download file",post.att_file.url %></small><br>
                             <% end %>
-			 <br> <p> Tags: <%= raw post.tag_list.map { |t| link_to t, t }.join(', ') %>
+			 <br> <p> Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 
                                 <div class="posttime">created at  <%= post.created_at %></div>
                             </div>

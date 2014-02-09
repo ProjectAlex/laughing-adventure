@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     # GET /posts
     def index
         #@post = Post.find(:all, :order => 'posts.created_at DESC').paginate(:page => params[:page], :per_page => 5)
-        @post = Post.find(:all, :order => 'posts.created_at DESC')
+        @posts = Post.find(:all, :order => 'posts.created_at DESC')
         #@post = Post.all.reverse.paginate(:page => params[:page], :per_page => 5)
         respond_to do |format|
             format.html # index.html.erb
