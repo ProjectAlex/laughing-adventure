@@ -13,6 +13,10 @@ class MessagesController < ApplicationController
  #elsif params[:mailbox] == "archieved"
  # @messages = @user.archived_messages
  #end
+ respond_to do |format|
+     format.html
+     format.json { render json: @messages }
+ end
  end
  
  def unreadcount

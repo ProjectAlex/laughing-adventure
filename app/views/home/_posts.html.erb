@@ -26,7 +26,7 @@
                         <blockquote>
 
                             <h3 style="opacity:0.7">
-                                <%= post.nature %>
+                                <%#<%= post.nature %>
                         </h3>
                             <% if post.nature == "image" %>
                                     <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
@@ -38,7 +38,7 @@
                                 <%= embed(post.content,{width: @width}) %>
 				</div>
                                     <% end %>
-                                    <small><%= post.caption %></small><br>
+                                    <SMALL><%= post.caption %></SMALL><br>
 					                                                          <% if post.nature == "document"%>
                                     <small><%= link_to "Download file",post.att_file.url %></small><br>
                             <% end %>
