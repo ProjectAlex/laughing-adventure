@@ -33,8 +33,9 @@
                             <p><%= post.content %></p>
                         <% else %>
                             <p><%= post.content %></p>
-				<div class="embedded">
-                                <%= embed(post.content) %>
+				<div class="embedded" onfocus="func()">
+				<% @width=params[:width].to_i*640/1425 unless !params[:width] %>
+                                <%= embed(post.content,{width: @width}) %>
 				</div>
                                     <% end %>
                                     <small><%= post.caption %></small><br>

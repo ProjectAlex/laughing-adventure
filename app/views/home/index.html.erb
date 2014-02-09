@@ -25,7 +25,50 @@
 <% else %>
 Welcome to our site. You may post anything and upload files upto 10MB. Though the caption may not appear for posts it must be filled with some nonsense(this is a bug). You may send private messages to each other and comment on posts and even have your own profile pictures. The server will be slow since im using a home connection so please be patient . Do try uploading images that contain text to see if our AUTO TAGGING system works. Thank youWelcome to our site. You may post anything and upload files upto 10MB. Though the caption may not appear for posts it must be filled with some nonsense(this is a bug). You may send private messages to each other and comment on posts and even have your own profile pictures. The server will be slow since im using a home connection so please be patient . Do try uploading images that contain text to see if our AUTO TAGGING system works.
 <% end %>
+ <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
 <script>
+
+ function getVideoID(){
+        var videoIframe =  $('iframe');
+        var videoURL = videoIframe.attr('src');
+        var id = videoURL.split("/")[4].split("?")[0];
+        videoIframe.after('<div id="player"></div>');
+        videoIframe.remove();
+        return (id);
+    }
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+       var videoID = getVideoID();
+       player = new YT.Player('player', {
+       videoId: videoID,
+       events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+           }
+        });
+
+          function onPlayerReady(event) {
+              //event.target.playVideo();
+          }
+
+          function onPlayerStateChange(event) {
+           var state = event.target.getPlayerState();
+            if (state === 2) {
+                //alert("Paused");
+            }
+             if (state === 0) {
+                //alert("Ended");
+		enable();
+             }
+	     else if (state ===1){
+	     	//alert("playing");
+		disable();
+	     }
+            }
+          }
 
 var rf;
 
@@ -41,14 +84,14 @@ function disable(){
 $(document).ready(function(){
 		timelyrefreshPostFeeds = function(){
 		url = '/refresh'
-		$.get(url,function(data,status){
+		$.get(url,{width: $(window).width() }).done(function(data,status){
 			$('#postsfeed').html(data)
-			return false
 			clearInterval(rf);
-			alert(refreshtime);
+			//alert($(window.width));
 			rf = setInterval(timelyrefreshPostFeeds,refreshtime);
-			refreshtime = refreshtime*1.5;		
-			});
+			refreshtime = refreshtime*1.5;	
+			return false;	
+			})
 		};
 		timelyrefreshMessageBadge = function(){url = '/message'
 		$.get(url,function(data,status){

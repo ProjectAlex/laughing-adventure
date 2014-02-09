@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
  
  def unreadcount
   @count = current_user.unread_message_count
-  render :text => '<span class="unreadmessages badge">'+@count.to_s+'</span>'
+  render :text => '<span class="unreadmessages badge">'+@count.to_s+'</span>' unless @count == 0
  end
  
  def sent   
