@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
         respond_to do |format|
             format.html # show.html.erb
-            format.json {render}
+            format.json {render json: @pos t}
         end
     end
 
