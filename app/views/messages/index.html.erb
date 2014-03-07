@@ -21,7 +21,7 @@
 						</b>
 					<%  end %>
 				</td>
-				<td><%=h message.sender.name %> at <%=h message.sent_at.to_formatted_s(:long)   %></td>
+				<td><% if message.sender.nil? %>Deleted User<% else %><%= message.sender.name  %><% end %> at <%=h message.sent_at.to_formatted_s(:long)   %></td>
 				<td><%= link_to("Show",message_path(:id=>message)) %></td>
 			</tr>
 		<% end %>

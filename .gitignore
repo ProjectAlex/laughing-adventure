@@ -83,5 +83,7 @@ pickle-email-*.html
 solr/pids/development/sunspot-solr-development.pid
 solr/development/*
 solr/**
+solr/development/data/index/segments.gen
+
 
 
