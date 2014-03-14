@@ -33,14 +33,14 @@ Steps to be followed
 - Start the Rails Server 
 
             $ rails s
-- go to [localhost:3000]{localhost:3000} in your browser. 
+- go to [localhost:3000](localhost:3000) in your browser. 
 
 - Development sites (The servers might not be on all the time) at 
 
 
-        - [http://17748bc1.ngrok.com/]{http://17748bc1.ngrok.com/}
-        - [https://56374f6c.ngrok.com/]{https://56374f6c.ngrok.com/}
-	    - [https://alex.ngrok.com/]{https://alex.ngrok.com/}
+        - [http://17748bc1.ngrok.com/](http://17748bc1.ngrok.com/)
+        - [https://56374f6c.ngrok.com/](https://56374f6c.ngrok.com/)
+	    - [https://alex.ngrok.com/](https://alex.ngrok.com/)
 
 Using the Mailcatcher gem
 ----------
@@ -50,7 +50,7 @@ Using the Mailcatcher gem
     
             $ mailcatcher
     
-- on browser navigate to [http://127.0.0.1:1080/]{http://127.0.0.1:1080/} to view mails that were sent 
+- on browser navigate to [http://127.0.0.1:1080/](http://127.0.0.1:1080/) to view mails that were sent 
 
 License
 ----------
