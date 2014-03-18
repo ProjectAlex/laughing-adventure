@@ -80,6 +80,7 @@ pickle-email-*.html
 .zeus.sock
 
 #solr files
+solr/
 solr/pids/development/sunspot-solr-development.pid
 solr/development/*
 solr/**
