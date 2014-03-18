@@ -8,4 +8,8 @@ body { padding-top: 60px; }
   color: #777777;
   text-decoration: none;
   text-shadow: 0 1px 0 white; }
+  
+  .content{
+    z-index:initial !important;
+  }
 //@import "bootstrap-responsive";

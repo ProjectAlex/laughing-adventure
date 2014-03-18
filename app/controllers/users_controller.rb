@@ -22,6 +22,7 @@ class UsersController < ApplicationController
             format.json {render json: @user}
 
         end
+    end
 
         def update
             @user = User.friendly.find(params[:id])
@@ -56,4 +57,4 @@ class UsersController < ApplicationController
             end
         end
     end
-end
+
