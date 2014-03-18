@@ -56,8 +56,8 @@ class PostsController < ApplicationController
                         z=a.split(' ')
                         z.each do |w|
                             puts w.length
-                            if w.length <= 4		#Decides min word length !!!!!
-                                z.delete_at(z.index(w))
+                            if w.length < 4		#Decides min word length !!!!!
+                                z.delete(w)
                             end
                         end
                         z=z.join(" ")        
