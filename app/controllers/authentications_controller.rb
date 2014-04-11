@@ -28,6 +28,11 @@ class AuthenticationsController < ApplicationController
     auth = request.env["omniauth.auth"]
     current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
 #     current_user.avatar = open(auth['info']['image'])
+    if auth.info.image.present?
+      avatar_url = process_uri(auth.info.image)
+      current_user.update_attribute(:avatar, URI.parse(avatar_url))
+    end
+
     flash[:notice] = "Authentication successful."
     redirect_to authentications_url
   end
@@ -61,6 +66,14 @@ class AuthenticationsController < ApplicationController
       @authentication = Authentication.find(params[:id])
     end
 
+    def process_uri(uri)
+      require 'open-uri'
+      require 'open_uri_redirections'
+      open(uri, :allow_redirections => :safe) do |r|
+	r.base_uri.to_s
+      end
+    end
+ 
     # Never trust parameters from the scary internet, only allow the white list through.
     def authentication_params
       params.require(:authentication).permit(:user_id, :provider, :uids)

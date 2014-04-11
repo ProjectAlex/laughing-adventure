@@ -31,7 +31,9 @@ group :assets do
 end
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 gem 'omniauth'
+gem 'open_uri_redirections'
 group :development do
     gem 'sqlite3'
     gem 'mysql2'
