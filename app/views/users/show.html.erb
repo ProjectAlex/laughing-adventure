@@ -2,7 +2,7 @@
 <h3><%= @user.name %></h3>
 <div class="row">
 <div class="span3">
-<%= image_tag @user.avatar.url(:medium) %><br><br>
+<%= image_tag @user.avatar.url(:large), :size => "150", :class => 'img-thumbnail' %><br><br>
 <p>Email : <%= @user.email if @user.email %></p>
 <p>DOB : <%= @user.date_of_birth %></p>
 </div>
