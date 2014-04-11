@@ -30,6 +30,8 @@ group :assets do
     gem 'therubyracer', :platform=>:ruby
 end
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth'
 group :development do
     gem 'sqlite3'
     gem 'mysql2'

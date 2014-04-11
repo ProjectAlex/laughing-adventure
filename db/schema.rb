@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126133011) do
+ActiveRecord::Schema.define(version: 20140411111700) do
+
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blacklists", force: true do |t|
     t.string   "word"
@@ -156,6 +164,8 @@ ActiveRecord::Schema.define(version: 20140126133011) do
     t.datetime "avatar_updated_at"
     t.string   "slug"
     t.date     "date_of_birth"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

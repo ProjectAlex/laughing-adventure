@@ -1,6 +1,12 @@
 LaughingAdventure::Application.routes.draw do
+  resources :authentications
+
     devise_for :views
     root :to => "home#index"
+
+    
+    get '/auth/:provider/callback' => 'authentications#create'
+    delete '/authentications"' => 'authentications#destroy'
 
     get 'tags/:tag', to: 'posts#index', as: :tag
     match '/search', :to => "home#search" , :via => "get"
