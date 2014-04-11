@@ -29,7 +29,7 @@ class AuthenticationsController < ApplicationController
     current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
 #     current_user.avatar = open(auth['info']['image'])
     if auth.info.image.present?
-      avatar_url = process_uri(auth.info.image)
+      avatar_url = process_uri(auth.info.image+'?type=large')
       current_user.update_attribute(:avatar, URI.parse(avatar_url))
     end
 

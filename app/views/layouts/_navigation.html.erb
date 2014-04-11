@@ -28,7 +28,7 @@ clearInterval(rf);
 </form>
 
 <ul class="nav navbar-nav navbar-right">
-    <li><%= image_tag current_user.avatar.url(:medium), size:'40x40' ,class: 'img-rounded', style: 'margin-top:5px'%></li><li>
+    <li><%= image_tag current_user.avatar.url(:thumb), size:'40x40' ,class: 'img-circle', style: 'margin-top:5px'%></li><li>
     <%= link_to current_user.name, current_user %>
     </li>
     <li class="dropdown">

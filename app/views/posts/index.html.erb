@@ -9,7 +9,7 @@
         <%@user = User.where(id: post.posted_by_uid).first 
 	  if @user %>
         <% if params[:controller]=='home'%>
-            <div class="col-xs-2 postimg">	<%= image_tag @user.avatar.url(:medium),:size => "100x100",class: 'postavatar img-thumbnail' %>	</div>
+            <div class="col-xs-2 postimg">	<%= image_tag @user.avatar.url(:medium),:size => "100x100",class: 'postavatar img-c' %>	</div>
 
         <div class="col-xs-10">
         <% else %>
