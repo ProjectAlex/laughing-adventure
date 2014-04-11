@@ -8,9 +8,11 @@ class Message < ActiveRecord::Base
   end
   public
   belongs_to :sender,
+ :class_name => 'User',
  :primary_key => 'id',
  :foreign_key => 'sender_id'
   belongs_to :recepient,
+ :class_name => 'User',
  :primary_key => 'id',
  :foreign_key => 'recepient_id'
 
