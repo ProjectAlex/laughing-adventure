@@ -1,3 +1,9 @@
+<br>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<a class="btn btn-facebook" href="../auth/facebook"><i class="fa fa-facebook"></i> | Sign in with facebook</a>
+<a class="btn btn-twitter" href="../auth/twitter"><i class="fa fa-twitter"></i> | Sign in with twitter</a>
+<a class="btn btn-linkedin" href="../auth/linkedin"><i class="fa fa-linkedin"></i> | Sign in with linkedin</a>
+<br><br>
 <%- if controller_name != 'sessions' %>
   <%= link_to "Sign in", new_session_path(resource_name) %><br />
 <% end -%>
@@ -17,6 +23,7 @@
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
+
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>

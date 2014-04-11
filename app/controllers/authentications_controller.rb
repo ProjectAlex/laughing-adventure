@@ -21,20 +21,41 @@ class AuthenticationsController < ApplicationController
   def edit
   end
 
+
   # POST /authentications
   # POST /authentications.json
   def create
 #     render :text => request.env["omniauth.auth"].to_yaml
-    auth = request.env["omniauth.auth"]
-    current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
-#     current_user.avatar = open(auth['info']['image'])
-    if auth.info.image.present?
-      avatar_url = process_uri(auth.info.image+'?type=large')
-      current_user.update_attribute(:avatar, URI.parse(avatar_url))
-    end
-
+  omniauth = request.env["omniauth.auth"]
+  authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+  if authentication
+    flash[:notice] = "Signed in successfully."
+    sign_in_and_redirect(:user, authentication.user)
+  elsif current_user
+    current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
     flash[:notice] = "Authentication successful."
+    image_set(current_user,omniauth)
     redirect_to authentications_url
+  else
+    user = User.find_by_email(omniauth['info']['email'])
+    if user
+      flash[:notice] = "Signed in and added authentication successfully."
+      user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      image_set(user,omniauth)
+      sign_in_and_redirect(:user, user)
+    else
+      user=User.new
+    end
+    user.apply_omniauth(omniauth)
+    image_set(user,omniauth)
+    if user.save
+      flash[:notice] = "Signed in successfully."
+      sign_in_and_redirect(:user, user)
+    else
+      session[:omniauth] = omniauth.except('extra')
+      redirect_to new_user_registration_url
+    end
+  end
   end
 
   # PATCH/PUT /authentications/1
@@ -64,6 +85,13 @@ class AuthenticationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_authentication
       @authentication = Authentication.find(params[:id])
+    end
+    
+    def image_set(user,omniauth)
+      if omniauth.info.image.present? && omniauth.provider != 'linkedin'
+	avatar_url = process_uri(omniauth.info.image+'?type=large')
+	user.update_attribute(:avatar, URI.parse(avatar_url))
+      end
     end
 
     def process_uri(uri)

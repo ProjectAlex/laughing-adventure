@@ -55,6 +55,19 @@ class User < ActiveRecord::Base
  def unread_message_count
   eval 'received_messages.count(:conditions => ["read_at IS NULL"])'
  end
+ 
+ 
+
+def apply_omniauth(omniauth)
+  self.email = omniauth['info']['email'] if email.blank?
+  authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+end
+
+def password_required?
+  (authentications.empty? || !password.blank?) && super
+end
+
+
 
  searchable do
     text :name
