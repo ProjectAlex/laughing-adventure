@@ -110,15 +110,20 @@ $(document).ready(function(){
 			var id = $(this).attr("id");
 			var name = $(this).attr("name");
 			var parent = $(this)
+			//parent.parent().parent().children().children().fadeOut(500);
+			//parent.fadeIn("fast");
+			var temp=parent.parent().parent().html();
+			var p=parent.parent().parent();
 			if (name=='up')
 			{
-
-
+			
 			$.get('/votedup', {id: id},
 				function(data,status){
+				//alert(data);
 				data=data.split("<<<<<<<<");
-				parent.parent().parent().children().children().html(data[1]);
-				parent.html(data[0]);
+				parent.toggle( "bounce", { times: 3 }, "slow" );
+				setTimeout(function () { parent.parent().parent().children().children().html(data[1]);parent.html(data[0]); }, 700);
+				parent.parent().parent().children().children().fadeIn("slow");
 				});
 			}
 			else
@@ -126,8 +131,9 @@ $(document).ready(function(){
 			$.get('/voteddown', {id: id},
 				function(data,status){
 				data=data.split("<<<<<<<<");
-				parent.parent().parent().children().children().html(data[0]);
-				parent.html(data[1]);
+				parent.toggle( "bounce", { times: 3 }, "slow" );
+				setTimeout(function () { parent.parent().parent().children().children().html(data[0]);parent.html(data[1]); }, 700);
+				parent.parent().parent().children().children().fadeIn("slow");
 				});
 			}
 		return false;
@@ -142,7 +148,7 @@ function enable(){
 
 
 </script>
-
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 
 

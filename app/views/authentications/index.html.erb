@@ -15,7 +15,7 @@
   <tbody>
     <% @authentications.each do |authentication| %>
       <tr>
-        <td><%= authentication.user_id %></td>
+        <td><%= authentication.user.name %></td>
         <td><%= authentication.provider %></td>
         <td><%= authentication.uid %></td>
         <td><%= link_to 'Show', authentication %></td>
