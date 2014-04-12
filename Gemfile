@@ -32,6 +32,8 @@ end
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
+gem 'omniauth-soundcloud', '~> 1.0.0'
+gem 'omniauth-gplus', '~> 1.0'
 gem 'omniauth'
 gem 'open_uri_redirections'
 group :development do
