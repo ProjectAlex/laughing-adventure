@@ -47,6 +47,7 @@ class AuthenticationsController < ApplicationController
       user=User.new
     end
     user.apply_omniauth(omniauth)
+    user.skip_confirmation!
     image_set(user,omniauth)
     if user.save
       flash[:notice] = "Signed in successfully."
