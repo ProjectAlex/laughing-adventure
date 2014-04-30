@@ -8,7 +8,7 @@
   <%= f.input :email, :required => true ,:error_html => { :class => 'has-error'}%>
   <%= f.input :password, :required => true,:error_html => { :class => 'has-error'} %>
   <%= f.input :password_confirmation, :required => true,:error_html => { :class => 'has-error'} %>
-  <%= f.input :date_of_birth,:required => true,start_year: Date.today.year - 90 ,end_year: Date.today.year - 12,:error_html => { :class => 'has-error'}%>
+  <%= f.input :date_of_birth,:required => true,start_year: Date.today.year - 90 ,end_year: Date.today.year - 10,:error_html => { :class => 'has-error'}%>
   <%= f.button :submit, 'Sign up', :class => 'btn btn-success' %>
 <% end %>
 

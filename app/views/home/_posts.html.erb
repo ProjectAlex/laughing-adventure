@@ -29,7 +29,7 @@
                                 <%#<%= post.nature %>
                         </h3>
                             <% if post.nature == "image" %>
-                                    <%= link_to "#{image_tag (post.att_file.url(:medium)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
+                                    <%= link_to "#{image_tag (post.att_file.url(:large)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
                             <p><%= post.content %></p>
                         <% else %>
                             <p><%= post.content %></p>
@@ -49,9 +49,6 @@
 
 			  <div class="row">
                             <div class="col-xs-8">
-                               <% if post.nature == "document"%>
-                                    <small><%= link_to "Download file",post.att_file.url %></small><br>
-                            <% end %>
 			 <br> <p> Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 
                                 <div class="posttime">created at  <%= post.created_at %></div>

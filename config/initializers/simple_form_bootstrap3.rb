@@ -1,12 +1,12 @@
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
-  config.wrappers :bootstrap3, tag: 'div', class: 'form-group', error_class: 'error' do |b|
+  config.wrappers :bootstrap3, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label
     b.wrapper :controls, tag: 'div', class: 'col-lg-6' do |ba|
       ba.use :input
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+      ba.use :error, wrap_with: { tag: 'span', class: 'has-error' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
   end
@@ -20,7 +20,7 @@ SimpleForm.setup do |config|
         prepend.use :input
       end
       input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
-      input.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+      input.use :error, wrap_with: { tag: 'span', class: 'has-error' }
     end
   end
 
@@ -33,7 +33,7 @@ SimpleForm.setup do |config|
         append.use :input
       end
       input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
-      input.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+      input.use :error, wrap_with: { tag: 'span', class: 'has-error' }
     end
   end
 
@@ -43,7 +43,7 @@ SimpleForm.setup do |config|
     b.use :label
     b.wrapper :controls, tag: 'div', class: 'col-lg-6' do |ba|
       ba.use :input, class: ''
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+      ba.use :error, wrap_with: { tag: 'span', class: 'has-error' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
   end

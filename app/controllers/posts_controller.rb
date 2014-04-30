@@ -34,17 +34,18 @@ class PostsController < ApplicationController
         #@post.user = current_user
         @post.ups=0
         @post.downs=0
-        require 'tesseract'
+        
+        @post.save
+        respond_to do |format|
+            if @post.save
+                if @post.nature=="image"
+		    require 'tesseract'
         @blacklist=Blacklist.all.pluck('word')
         e = Tesseract::Engine.new {|e|
             e.language  = :eng
             e.blacklist = '1234567890!@#$%^&*(){}:"|<>?~`;\',./'
         }
 
-        @post.save
-        respond_to do |format|
-            if @post.save
-                if @post.nature=="image"
                     @path= Rails.root.to_s() + '/public' +@post.att_file.url
                     ocr_link=(@path).split('?')
                     #Here the adding of tags starts

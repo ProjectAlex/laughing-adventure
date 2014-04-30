@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 
     after_create :assign_default_role
 
-attr_accessor :password, :password_confirmation, :current_password
-attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :current_password,:avatar,:att_file,:authentications
+#attr_accessor :password, :password_confirmation, :current_password
+#attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :current_password,:avatar,:att_file,:authentications,:posts,:comments,:received_messages,:sent_messages
 
     def assign_default_role
         if User.count == 1    
@@ -64,6 +64,7 @@ attr_accessible :email, :password, :password_confirmation, :remember_me, :userna
 def apply_omniauth(omniauth)
   self.email = omniauth['info']['email'] if email.blank?
   self.name = omniauth.info.name if name.blank?
+  self.date_of_birth = omniauth.extra.raw_info.birthday
   #self.password = '12345678' if name.password?
   authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
 end

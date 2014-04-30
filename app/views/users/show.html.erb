@@ -2,7 +2,8 @@
 <h3><%= @user.name %></h3>
 <div class="row">
 <div class="span3">
-<%= image_tag @user.avatar.url(:large), :size => "150", :class => 'img-thumbnail' %><br><br>
+<%= link_to "#{image_tag (@user.avatar.url(:large)) , size:'200x200',class: 'img-thumbnail'}".html_safe , @user.avatar.url%>
+<%# image_tag @user.avatar.url(:large), :size => "200", :class => 'img-thumbnail' %><br><br>
 <p>Email : <%= @user.email if @user.email %></p>
 <p>DOB : <%= @user.date_of_birth %></p>
 </div>

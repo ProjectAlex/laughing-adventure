@@ -28,6 +28,7 @@ class AuthenticationsController < ApplicationController
 #     render :text => request.env["omniauth.auth"].to_yaml
   omniauth = request.env["omniauth.auth"]
   authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+  #render :text => omniauth.to_json
   if authentication
     flash[:notice] = "Signed in successfully using existing authentication."
     sign_in_and_redirect(:user, authentication.user)
@@ -35,6 +36,7 @@ class AuthenticationsController < ApplicationController
     current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
     flash[:notice] = "Authentication successful."
     image_set(current_user,omniauth)
+    update_omniauth(current_user,omniauth)
     redirect_to authentications_url
   else
     user = User.find_by_email(omniauth['info']['email'])
@@ -42,7 +44,8 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Signed in and added authentication successfully."
       user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       image_set(user,omniauth)
-      sign_in_and_redirect(:user, user)
+      update(user,omniauth)
+#      sign_in_and_redirect(:user, user)
     else
       user=User.new
     end
@@ -89,9 +92,19 @@ class AuthenticationsController < ApplicationController
     end
     
     def image_set(user,omniauth)
-      if omniauth.info.image.present? && omniauth.provider != 'linkedin'
+      if omniauth.info.image.present? && omniauth.provider != 'linkedin' && user.avatar.blank?
 	avatar_url = process_uri(omniauth.info.image+'?type=large')
 	user.update_attribute(:avatar, URI.parse(avatar_url))
+      end
+    end
+
+    def update_omniauth(user,omniauth)
+      if omniauth.info.name.present?
+      	user.update_attribute(:name,omniauth.info.name)
+      end
+      if omniauth.extra.raw_info.birthday.present?
+	date=Date.strptime(omniauth.extra.raw_info.birthday,'%m/%d/%Y')
+      	user.update_attribute(:date_of_birth,date)
       end
     end
 
