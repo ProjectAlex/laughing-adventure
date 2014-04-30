@@ -45,7 +45,7 @@ class AuthenticationsController < ApplicationController
       user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       image_set(user,omniauth)
       update(user,omniauth)
-#      sign_in_and_redirect(:user, user)
+      sign_in_and_redirect(:user, user)
     else
       user=User.new
     end
