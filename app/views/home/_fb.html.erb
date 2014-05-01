@@ -1,0 +1,66 @@
+<% if posts_streams.empty? %>
+    <div class="empty"><h3> no posts yet </h3></div>
+<% else %>
+    <% posts_streams.each do |post| %>
+    <div class="postbody" title="Facebook Feed"> 
+
+
+    <div class="row">
+        <%#@user = User.where(id: post.posted_by_uid).first 
+	  if @user %>
+        <% if params[:controller]=='home'%>
+            <div class="col-xs-2 postimg">	<%= image_tag current_user.avatar.url(:medium),:size => "100x100",class: 'postavatar img-rounded img-thumbnail' %>	</div>
+	
+        <div class="col-xs-10">
+        <% else %>
+                <div class="col-xs-12">
+            <% end %>
+                <div class="row">
+		    <div class="posttext">
+			<blockquote>
+			     <% if post['type']=='photo' %>
+				<p><%= post['message'] %></p>
+				<%= image_tag post['picture'] %>
+			     <% end %>
+                            <p><%= post['story'] %></p>
+                                    <SMALL><%= post['type'] %></SMALL><br>
+
+                            <br><small><%= post['from']['name'] %></small><br>
+                              
+
+
+			  <div class="row">
+                            <div class="col-xs-8">
+
+                                <div class="posttime">created at  <%= post['created_time'] %></div>
+                            </div>
+
+
+                        </div>
+
+
+                    </blockquote>
+			</div>
+		    <div class="row">
+                    <div class="col-xs-10 col-xs-offset-3 comments">
+                        <%#render :partial => 'posts/comments.html.erb' , :locals => {:post => post } %>
+                    </div>
+		    </div>
+		    <div class="row">
+                    <div class="col-xs-10  col-xs-offset-1 newcomment">
+                        <%#render :partial => 'comments/new.html.erb' , :locals => { :post => post }%>	<br>	
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+         
+           
+
+    </div>
+<% end %>
+ <%# will_paginate posts_streams %>
+<% end %>
+

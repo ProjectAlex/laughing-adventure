@@ -1,3 +1,8 @@
+<div class="facebookFeed">
+<% if session[:fb_token] && (params[:page].nil? || params[:page]=='1') %>
+    <%= render :partial => 'fb.html.erb', :locals => {:posts_streams => @fb } %>
+<% end %>
+</div>
 <% if posts_streams.empty? %>
     <div class="empty"><h3> no posts yet </h3></div>
 <% else %>

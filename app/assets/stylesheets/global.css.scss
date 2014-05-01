@@ -79,6 +79,22 @@ display:block;
 transition : all 0.7s;
 }
 
+.facebookFeed .posttext{
+background:#3b5998;
+color:white;
+}
+
+.facebookFeed blockquote{
+border-left:none;
+}
+.facebookFeed small{
+color:white;
+}
+
+.facebookFeed .posttime{
+color:white;
+}
+
 .empty{
 	margin-left:70px;
 padding:5px;

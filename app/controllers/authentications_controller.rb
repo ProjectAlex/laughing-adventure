@@ -25,12 +25,29 @@ class AuthenticationsController < ApplicationController
   # POST /authentications
   # POST /authentications.json
   def create
-#     render :text => request.env["omniauth.auth"].to_yaml
+  #render :text => request.env["omniauth.auth"].to_yaml
   omniauth = request.env["omniauth.auth"]
+  if omniauth['provider']=='facebook'
+	session[:fb_token]=omniauth.credentials.token
+  end
   authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
   #render :text => omniauth.to_json
   if authentication
     flash[:notice] = "Signed in successfully using existing authentication."
+	#@graph = Koala::Facebook::API.new(omniauth.credentials.token, GRAPH_SECRET)
+        	#profile = @graph.get_object("me")
+    	#friends = @graph.get_connections("me", "feed")
+        #render :text => friends.to_yaml
+        #render :partial => 'home/fb.html.erb', :locals => { :posts_streams => friends }
+    #@graph.put_connections("me", "feed", :message => "I am writing on my wall!")
+
+    # Three-part queries are easy too!
+    #@graph.get_connections("me", "mutualfriends/#{friend_id}")
+
+    # You can use the Timeline API:
+    # (see https://developers.facebook.com/docs/beta/opengraph/tutorial/)
+    #@graph.put_connections("me", "namespace:action", :object => object_url)
+
     sign_in_and_redirect(:user, authentication.user)
   elsif current_user
     current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
@@ -44,7 +61,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Signed in and added authentication successfully."
       user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       image_set(user,omniauth)
-      update(user,omniauth)
+      update_omniauth(user,omniauth)
       sign_in_and_redirect(:user, user)
     else
       user=User.new

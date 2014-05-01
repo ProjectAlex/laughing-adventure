@@ -56,12 +56,20 @@ class HomeController < ApplicationController
 
 
     def refreshposts
+	if session[:fb_token]
+	  @graph = Koala::Facebook::API.new(session[:fb_token], GRAPH_SECRET)
+          @fb = @graph.get_connections("me", "feed")
+	end
         render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams }
     end
 
     protected
     def update_poststreams
         require 'will_paginate/array' 
+		if session[:fb_token]
+	  		@graph = Koala::Facebook::API.new(session[:fb_token], GRAPH_SECRET)
+    			@fb = @graph.get_connections("me", "feed")
+		end
         @posts_streams = Post.find(:all, :order => 'posts.created_at DESC').paginate(:page => params[:page], :per_page => 5)
         #@posts_streams = Post.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
     end 

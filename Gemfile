@@ -35,6 +35,7 @@ group :assets do
     gem 'therubyracer', :platform=>:ruby
 end
 gem 'omniauth-facebook'
+gem 'koala'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem 'omniauth-soundcloud', '~> 1.0.0'
