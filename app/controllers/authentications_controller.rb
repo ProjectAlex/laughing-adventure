@@ -4,7 +4,12 @@ class AuthenticationsController < ApplicationController
   # GET /authentications
   # GET /authentications.json
   def index
-    @authentications = current_user.authentications if current_user
+    if current_user
+    	@authentications = current_user.authentications
+    else
+	flash[:notice]='Please login first'
+	redirect_to root_path
+    end
   end
 
   # GET /authentications/1
@@ -71,7 +76,7 @@ class AuthenticationsController < ApplicationController
     image_set(user,omniauth)
     if user.save
       flash[:notice] = "Signed in successfully."
-      sign_in_and_redirect(:user, user)
+      #sign_in_and_redirect(:user, user)
     else
       session[:omniauth] = omniauth.except('extra')
       redirect_to new_user_registration_url

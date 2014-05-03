@@ -8,12 +8,13 @@
     <div class="row">
         <%#@user = User.where(id: post.posted_by_uid).first 
 	  if @user %>
+	<div class="col-xs-1 visible-xs"></div>
         <% if params[:controller]=='home'%>
-            <div class="col-xs-2 postimg">	<%= image_tag current_user.avatar.url(:medium),:size => "100x100",class: 'postavatar img-rounded img-thumbnail' %>	</div>
+            <div class="col-sm-2 postimg hidden-xs">	<%= image_tag current_user.avatar.url(:medium),:size => "100x100",class: 'postavatar img-rounded img-thumbnail' %>	</div>
 	
-        <div class="col-xs-10">
+        <div class="col-sm-10 col-xs-11">
         <% else %>
-                <div class="col-xs-12">
+                <div class="col-sm-12 col-xs-11">
             <% end %>
                 <div class="row">
 		    <div class="posttext">

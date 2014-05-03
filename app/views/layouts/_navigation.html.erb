@@ -15,20 +15,20 @@ clearInterval(rf);
 <% if user_signed_in? %>
     <ul class="nav navbar-nav">
     <% if current_user.has_role? :admin %>
-        <li>	  <%= link_to 'Admin', users_path ,:title => 'Admin console.To manage and view User details' %>	</li>
+        <li class="<%= 'active' if params[:controller]=='users' && params[:action]=='index' %>">	  <%= link_to 'Admin', users_path ,:title => 'Admin console.To manage and view User details' %>	</li>
 <% end %>
-    <li><a href="<%= index_messages_path %>"><i class="icon-folder-close"></i>Messages<span id="unreadmessages" class="unreadmessages badge"><%= current_user.unread_message_count unless current_user.unread_message_count == 0%></span></a></li>
+    <li class="<%= 'active' if params[:controller]=='messages' %>"><a href="<%= index_messages_path %>"><i class="icon-folder-close"></i>Messages<span id="unreadmessages" class="unreadmessages badge"><%= current_user.unread_message_count unless current_user.unread_message_count == 0%></span></a></li>
 </ul>
 
 <form class="navbar-form navbar-left" role="search" action="/search" method="get" accept-charset="ISO-8859-1">
-    <div class="form-group">
+    <div class="input-group">
         <input type="text" name="search" id="" class="form-control" value="" placeholder="Type Search Text Here"/>
+        <span class="input-group-btn"><button type="submit" class="btn btn-primary">Search</button></span>
     </div>
-        <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
 <ul class="nav navbar-nav navbar-right">
-    <li><%= image_tag current_user.avatar.url(:thumb), size:'40x40' ,class: 'img-circle', style: 'margin-top:5px'%></li><li>
+    <li class="hidden-sm"><%= image_tag current_user.avatar.url(:thumb), size:'40x40' ,class: 'img-circle', style: 'margin-top:5px'%></li><li>
     <%= link_to current_user.name, current_user %>
     </li>
     <li class="dropdown">

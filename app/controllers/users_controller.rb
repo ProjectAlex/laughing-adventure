@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     def show
         @user = User.friendly.find(params[:id])
         #  @user_posts = Post.where(posted_by_uid: @user.id).order('created_at DESC').load
+		if session[:fb_token]
+                        @graph = Koala::Facebook::API.new(session[:fb_token], GRAPH_SECRET)
+                        @fb = @graph.get_connections("me", "feed")
+                end
+
         @user_posts = Post.where(posted_by_uid: @user.id).paginate(:page => params[:page], :per_page => 5)
         respond_to do |format|
             format.html
