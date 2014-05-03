@@ -33,7 +33,7 @@
 			  <div class="row">
                             <div class="col-xs-8">
 
-                                <div class="posttime">created at  <%= post['created_time'] %></div>
+                                <div class="posttime">created at  <%= post['created_time'].to_date.strftime('%l:%M %P on %d %b'+ (' %Y' if Date.today.year!=post['created_time'].to_date.year).to_s) %></div>
                             </div>
 
 

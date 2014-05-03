@@ -57,7 +57,7 @@
                             <div class="col-sm-8 col-xs-12">
 			 <br> <p> Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 
-                                <div class="posttime">created at  <%= post.created_at %></div>
+                                <div class="posttime">created at  <span class="time"><%= post.created_at.strftime('%l:%M %P on %d %b'+ (' %Y' if Date.today.year!=post.created_at.year).to_s) %></span></div>
                             </div>
  
                             <div class="votebox col-sm-4 col-xs-12">

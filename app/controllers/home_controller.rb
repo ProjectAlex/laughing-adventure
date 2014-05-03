@@ -63,7 +63,7 @@ class HomeController < ApplicationController
         render :partial => 'posts.html.erb', :locals => { :posts_streams => @posts_streams }
     end
 
-    protected
+        protected
     def update_poststreams
         require 'will_paginate/array' 
 		if session[:fb_token]

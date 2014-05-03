@@ -1,16 +1,24 @@
 <%= provide(:title,@user.name) %>
 <div class="row">
-<div class="col-sm-4 col-xs-12">
+<div class="col-sm-4 col-xs-8">
 <%= link_to "#{image_tag (@user.avatar.url(:large)) , size:'200x200',class: 'img-thumbnail pull-right'}".html_safe , @user.avatar.url%>
 </div>
+<div class="col-xs-4 visible-xs"></div>
 <div class="col-sm-8 col-xs-12 jumbotron">
 <h1><%= @user.name %></h1>
 <p>Email : <%= @user.email if @user.email %></p>
-<p><%= 'DOB : '+@user.date_of_birth.strftime('%d %b %Y')+' ( '+((@user.date_of_birth - Date.today).to_i%365).to_s+' days remaining ) ' unless @user.date_of_birth.nil? %></p>
+<% 
+    bday = Date.new(Date.today.year, @user.date_of_birth.month, @user.date_of_birth.day)
+    bday += 1.year if Date.today >= bday
+%>
+<p><%= 'DOB : '+@user.date_of_birth.strftime('%d %b %Y')+' ( '+(bday - Date.today).to_i.to_s+' days remaining ) ' unless @user.date_of_birth.nil? %></p>
 </div>
-<br><br>
+</div>
+<br>
+<div class="row">
 <div class="col-xs-12">
 <div id="postsfeed">
     <%= render :partial => 'home/posts.html.erb', :locals => { :posts_streams => @user_posts } %>
+</div>
 </div>
 </div>
