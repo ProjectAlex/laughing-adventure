@@ -30,6 +30,7 @@ class AuthenticationsController < ApplicationController
   # POST /authentications
   # POST /authentications.json
   def create
+  redir = false
   #render :text => request.env["omniauth.auth"].to_yaml
   omniauth = request.env["omniauth.auth"]
   if omniauth['provider']=='facebook'
@@ -70,13 +71,14 @@ class AuthenticationsController < ApplicationController
       sign_in_and_redirect(:user, user)
     else
       user=User.new
+      redir=true
     end
     user.apply_omniauth(omniauth)
     user.skip_confirmation!
     image_set(user,omniauth)
-    if user.save
+    if user.save && redir
       flash[:notice] = "Signed in successfully."
-      #sign_in_and_redirect(:user, user)
+      sign_in_and_redirect(:user, user)
     else
       session[:omniauth] = omniauth.except('extra')
       redirect_to new_user_registration_url

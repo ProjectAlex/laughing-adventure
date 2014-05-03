@@ -10,7 +10,7 @@ rail(){
 					echo $b
 					date +'%m/%d/%Y %r' >> ../rails.txt
 					zsh --login
-					rails s
+					rails s -d
 					((c=c+1))
 					echo $c >> ../try.txt
 			else
