@@ -54,18 +54,18 @@
 
 
 			  <div class="row">
-                            <div class="col-sm-8 col-xs-12">
+                            <div class="col-sm-7 col-xs-12">
 			 <br> <p> Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 
                                 <div class="posttime">created at  <span class="time"><%= post.created_at.strftime('%l:%M %P on %d %b'+ (' %Y' if Date.today.year!=post.created_at.year).to_s) %></span></div>
                             </div>
  
-                            <div class="votebox col-sm-4 col-xs-12">
-                                <div class="col-xs-6">
+                            <div class="votebox col-sm-5 col-xs-12">
+                                <div class="col-xs-5">
                                     <a href="" id="<%= post.id %>" name="up" class="votes">
                                         <div class='up'></div><%= post.ups %> likes</a>
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-7 pull-right">
                                     <a href=""  id="<%= post.id %>"  name="down" class="votes">
                                         <div class='down'></div><%= post.downs %> dislikes</a>
                                 </div>

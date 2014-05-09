@@ -83,6 +83,8 @@ pickle-email-*.html
 
 #solr files
 solr/
+public/*
+solr/*
 solr/pids/development/sunspot-solr-development.pid
 solr/development/*
 solr/**
