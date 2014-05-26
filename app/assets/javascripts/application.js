@@ -15,3 +15,16 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require websocket_rails/main
+/*var dispatcher = new WebSocketRails('alex.ngrok.com/websocket');
+dispatcher.on_open = function(data) {
+  console.log('Connection has been established: ', data);
+  //alert('sending');
+  dispatcher.trigger('client_connected');
+}
+
+function addCommentToDom(comment) {
+  console.log('just received new comment: ' + comment);
+}
+dispatcher.bind('new_post', addCommentToDom);
+*/

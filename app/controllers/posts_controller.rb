@@ -34,8 +34,10 @@ class PostsController < ApplicationController
         #@post.user = current_user
         @post.ups=0
         @post.downs=0
-        
         @post.save
+	if session[:websocket]!='true'
+		redirect_to :controller => 'websockets', :action => 'pushpost' and return
+	else
         respond_to do |format|
             if @post.save
                 if @post.nature=="image"
@@ -87,6 +89,7 @@ class PostsController < ApplicationController
                 format.html { redirect_to root_path }
                 format.json { render :json => @post.errors, :status => :unprocessable_entity }
             end
+	end
             Libnotify.show :summary => @post.content , :body => "#{@post.content} \n#{@post.caption} \n #{@post.created_at}"
         end
     end
