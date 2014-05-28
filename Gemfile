@@ -43,6 +43,7 @@ gem 'omniauth-gplus', '~> 1.0'
 gem 'omniauth'
 gem 'open_uri_redirections'
 gem 'websocket-rails'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 group :development do
     gem 'sqlite3'
     gem 'mysql2'
@@ -60,6 +61,7 @@ group :test do
     gem 'email_spec'
 end
 group :production do
+    gem 'sqlite3'
     gem 'pg'
     gem 'rails_12factor'
 end

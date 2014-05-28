@@ -22,29 +22,13 @@ dispatcher.on_open = function(data) {
   //alert('sending');
   dispatcher.trigger('client_connected');
 }
-
+*/
+/*
 function addCommentToDom(comment) {
   console.log('just received new comment: ' + comment);
 }
 dispatcher.bind('new_post', addCommentToDom);
 */
-
-$(document).ready(function() {
-      var autoNav = setInterval(navHide,10000);
-      $("div.navbar-fixed-top").autoHidingNavbar();
-      $('.navbar-fixed').autoHidingNavbar('setDisableAutohide', true);
-
-      function navHide(){
-        $('.navbar-fixed').autoHidingNavbar('hide');
-      }
-
-      $( "body" ).mousemove(function( event ) {
-          $('.navbar-fixed').autoHidingNavbar('show');
-          var msg = "Handler for .mousemove() called at ";
-          clearInterval(autoNav);
-          autoNav = setInterval(navHide,3000);
-      });
-    });
 
     /*$(document).on('scroll', function() {
         if ($(window).scrollTop() >= 50) {
