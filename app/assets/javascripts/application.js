@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require_tree .
 //= require websocket_rails/main
+//= require owl.carousel
+
 /*var dispatcher = new WebSocketRails('alex.ngrok.com/websocket');
 dispatcher.on_open = function(data) {
   console.log('Connection has been established: ', data);

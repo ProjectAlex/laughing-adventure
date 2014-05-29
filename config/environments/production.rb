@@ -80,4 +80,23 @@ LaughingAdventure::Application.configure do
 
 
   config.assets.precompile += %w( .svg .eot .woff .ttf )
+  config.middleware.delete Rack::Lock
+
+  ENV['FACEBOOK_KEY'] = "1543877529171979";
+  ENV['FACEBOOK_SECRET'] = "c98c2607918dc9694c80162cfc2cdbe2";
+  ENV['GPLUS_KEY'] = "721921933806.apps.googleusercontent.com";
+  ENV['GPLUS_SECRET'] = "IFOxWWP801h81furq1kLfL29";
+  ENV['TWITTER_KEY'] = "6bRPnD0A0LGRpFgMPrzkSvOVP";
+  ENV['TWITTER_SECRET'] = "ZfGBuU8QCiWhJve9sF2HzxF6rwCx1A9C1bjwD5IwbFP2ixmk2L";
+  ENV['LINKEDIN_KEY'] = "77mn4bp66x5h2h";
+  ENV['LINKEDIN_SECRET'] = "7O3WNYh2NxJileBL";
+  GRAPH_SECRET = 'c98c2607918dc9694c80162cfc2cdbe2'
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "alex.ngrok.com",
+    :port => 25,
+    :domain => "alex.com",
+  }
+
 end

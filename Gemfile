@@ -44,6 +44,7 @@ gem 'omniauth'
 gem 'open_uri_redirections'
 gem 'websocket-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'owlcarousel-rails'
 group :development do
     gem 'sqlite3'
     gem 'mysql2'

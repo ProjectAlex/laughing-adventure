@@ -13,11 +13,18 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
     <script>
-    
-
+      current_user = <%= current_user ? 'true' : 'false' %>
     </script>
   </head>
   <body class="<%= controller_name %> <%= action_name %>" onload="init()" >
+
+<div class="owl-carousel" id="bgCarousel">
+  <% if current_user %>
+  <div class="item"> <%= image_tag current_user.avatar.url(:large) ,class: 'postavatar img-responsive img-rounded img-thumbnail owl-content'%> </div>
+  <% end %>
+  <div class="item"><%= image_tag("bg.jpg",class: 'postavatar img-responsive img-rounded img-thumbnail owl-content owl-bg') %></div>
+</div>
+
     <div class="navbar navbar-default navbar-fixed navbar-fixed-top" role="navigation" id="navbar" >   <div class="container">
       <div class="navbar-inner">
      
@@ -28,6 +35,12 @@
     </div>
     <div id="main" role="main">
       <div class="container">
+      <!--
+      <div class="background"></div>
+        <div class="mask">
+            <div class="bluredBackground"></div>
+        </div>
+        -->
         <div class="content">
            <div class="row">
             <div class="col-xs-12">
