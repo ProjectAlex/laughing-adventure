@@ -30,7 +30,6 @@ db/*.sqlite3
 /config/config.yml
 /config/database.yml
 /config/environments/development.rb
-/config/initializers/omniauth.rb
 /coverage.data
 /coverage/
 /db/*.javadb/
