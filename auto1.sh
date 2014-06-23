@@ -3,7 +3,7 @@ rail(){
 		c=0
 		while true;
 	do
-		b=$(pgrep -f rails)   
+		b=$(pgrep -f rails\ s\ \-d)   
 			echo $b
 			echo [ !$b ]
 			if [ $b ]
