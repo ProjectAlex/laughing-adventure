@@ -17,12 +17,12 @@ rail(){
 				((c=c+1))
 				echo $c >> ../try.txt
 			fi
-			if [ !$c ]
-				then
-					((delay=c*!30))
-			else
+		#	if [ !$c ]
+		#		then
+		#			((delay=c*!30))
+		#	else
 				delay=60
-			fi
+		#	fi
 			sleep $delay
 	done
 }
