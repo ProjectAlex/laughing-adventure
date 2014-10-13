@@ -21,4 +21,3 @@ libmysqlclient-dev
 libleptonica-dev libtesseract-dev
 tesseract-ocr tesseract-ocr-eng tesseract-ocr-nld imagemagick
 openjdk-7-jre openjdk-7-jdk
-libinotify-ruby libgtk2-ruby libnotify-dev

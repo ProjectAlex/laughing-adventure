@@ -7,7 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'tesseract-ocr'
+gem 'tesseract-ocr', '~> 0.1.5'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'cancan'
@@ -31,6 +31,7 @@ gem 'acts-as-taggable-on'
 gem 'embed'
 gem 'debugger' #for debugging
 gem 'friendly_id', '~> 5.0.0beta1'
+gem 'rails-reveal-js'
 group :assets do
     gem 'therubyracer', :platform=>:ruby
 end

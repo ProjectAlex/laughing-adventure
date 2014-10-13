@@ -221,6 +221,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
+    rails-reveal-js (2.6.1.2)
+      railties (~> 4.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -364,6 +366,7 @@ DEPENDENCIES
   puma
   quiet_assets
   rails (= 4.0.0)
+  rails-reveal-js
   rails_12factor
   rails_layout
   rolify
@@ -376,7 +379,7 @@ DEPENDENCIES
   sqlite3
   sunspot_rails
   sunspot_solr
-  tesseract-ocr
+  tesseract-ocr (~> 0.1.5)
   therubyracer
   thin
   turbolinks

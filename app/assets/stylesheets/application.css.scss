@@ -11,6 +11,7 @@
  *= require owl.carousel
  *= require owl.theme
  *= require_self
+ *= require reveal
  *= require_tree .
 */
 
@@ -43,3 +44,9 @@ color: #ff0000;
 opacity:1;
 }
  
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  float: initial !important;
+}

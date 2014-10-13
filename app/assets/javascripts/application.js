@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require reveal
 //= require_tree .
 //= require websocket_rails/main
 //= require owl.carousel

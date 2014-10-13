@@ -22,6 +22,11 @@ class HomeController < ApplicationController
     def home
     end
 
+    def reveal
+        @post=Post.new
+        render :layout => false
+    end
+
     def votedup
         @post = Post.find(params[:id])
         @likercheck=@post.likers.where(id: current_user.id).first

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex | <%= yield(:title) %></title>
+    <!--<title><%# content_for?(:title) ? yield(:title) : "Alex" %></title>-->
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Alex" %>">
+    <link rel="icon" 
+          type="image/png" 
+          href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/EtruscanA.svg/2000px-EtruscanA.svg.png">
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+    <script>
+      current_user = <%= current_user ? 'true' : 'false' %>
+    </script>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>" onload="init()" >
+<div class="facebookFeed">
+<% if session[:fb_token] && (params[:page].nil? || params[:page]=='1') %>
+    <%= render :partial => 'home/fb.html.erb', :locals => {:posts_streams => @fb } %>
+<% end %>
+</div>
+
+
+
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <%= form_for(@post)  do |f| %>
+<div class="container fields">    
+<%= f.label :type %>
+<div class="form-group radio">
+    <%= f.radio_button(:nature, "normal") %>
+<%= f.label :nature,"Normal" , :value => "normal" %><br>
+    <%= f.radio_button(:nature, "image") %>
+<%= f.label :nature,"Image" , :value => "image" %><br>
+    <%= f.radio_button(:nature, "document") %>
+<%= f.label :nature,"Document" , :value => "document" %><br>
+    <%= f.radio_button(:nature, "YouTube Video link/SoundCloud Link") %>
+<%= f.label :nature,"YouTube Video Link/SoundCloud Link" , :value => "link" %>
+</div>
+<div class="form-group">
+ <%= f.label :att_file, "File to Upload" %>
+        <%= f.file_field :att_file , :data => {
+ :max_file_size => 10.megabytes
+ } %>
+</div>
+<div class="form-group">
+    
+        <%= f.text_area :content ,:required => true, :class => 'form-control',:placeholder=>"Content/Link" , label: false %>
+   <br> 
+        <%= f.text_area :caption, :placeholder=>"Caption" , :class => 'form-control',label: false %>
+      </div>
+    <%= f.submit("Post it" , :class => "btn btn-primary") %>
+  </div>
+
+    
+<% end %>
+
+        </section>
+
+
+<% if @posts_streams.empty? %>
+    <div class="empty"><h3> no posts yet </h3></div>
+<% else %>
+        <section>
+
+    <% @posts_streams.each do |post| %>
+    <%@user = User.where(id: post.posted_by_uid).first 
+    if @user %>
+            <section><%= image_tag @user.avatar.url(:medium),:size => "100x100",class: 'postavatar img-rounded img-thumbnail' %>
+<% if post.posted_by_uid==current_user.id || (current_user.has_role? :admin) %>
+                                <%= link_to 'x', post_path(post), method: :delete, class: "btn btn-danger btn-sm", title: "Delete Post" ,confirm: 'Are you sure?' %>
+                        <% end %>
+                        <% if post.nature == "image" %>
+                                    <%= link_to "#{image_tag (post.att_file.url(:large)) , size:'200x200',class: 'img-thumbnail'}".html_safe , post.att_file.url%>
+                            <h1><%= post.content %></h1>
+                        <% else %>
+                            <h1><%= post.content %></h1>
+        <div class="embedded" onfocus="func()">
+        <% @width=params[:width].to_i*640/1425 unless !params[:width] %>
+                                <%= embed(post.content,{width: @width}) %>
+        </div>
+                                    <% end %>
+                                    <SMALL><%= post.caption %></SMALL><br>
+                                                                    <% if post.nature == "document"%>
+                                    <small><%= link_to "Download file",post.att_file.url %></small><br>
+                            <% end %>
+
+            </section>
+    
+<% end %>
+<% end %>
+        </section>
+
+ <%= will_paginate @posts_streams %>
+<% end %>
+</div>
+    </div>
+
+
+
+
+          <footer>
+		<br><br>
+		<small>A site by <span title="Head">Prashant</span>, <span title="Coder">Mithul</span>, <span title="Logo Designer">Mithun</span>, <span title="Finance Head">Navnith</span></small>
+          </footer>
+        </div>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
+    <!--[if !(lt IE 8)]><!--> 
+       
+               <!--<![endif]-->
+               
+<script>
+  Reveal.initialize({
+
+    // Display controls in the bottom right corner
+    controls: true,
+
+    // Display a presentation progress bar
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: false,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    center: true,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+
+});</script>
+  </body>
+</html>
